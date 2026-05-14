@@ -15,7 +15,35 @@
   <a href="https://paypal.me/uiuxpromax"><img src="https://img.shields.io/badge/PayPal-Support%20Development-00457C?style=flat-square&logo=paypal&logoColor=white" alt="PayPal"></a>
 </p>
 
-An AI skill that provides design intelligence for building professional UI/UX across multiple platforms and frameworks.
+## The UI quality layer for AI coding agents.
+
+**Stop shipping AI-looking pages. Start shipping the bar.**
+
+UI/UX Pro Max is the execution layer agents call when they need to understand a product's visual system, generate better UI, critique existing UI, enforce quality rules, and produce assets — across every major coding environment (Claude Code, Cursor, Copilot, Codex, Gemini CLI, Cline, Continue, Droid, KiloCode, Kiro, OpenCode, Qoder, RooCode, Trae, Warp, Windsurf, Augment).
+
+```bash
+npx uipro-cli init      # install the skill into your project
+uipro audit src/        # UX/quality audit
+uipro lint src/         # deterministic anti-pattern scan (CI-friendly)
+uipro polish landing    # final-pass polish
+uipro generate hero --prompt "matte black headphones, studio rim-lit"
+uipro brandkit --prompt "premium dark fintech, slate + electric red"
+```
+
+### Verb interface — one command per intent
+
+| Verb | Use it for |
+|------|------------|
+| `uipro audit <path>` | UX/quality audit (accessibility, performance, interactions) |
+| `uipro polish <path>` | Final pass — spacing, hierarchy, focus states, typography |
+| `uipro critique <topic>` | Design review — visual hierarchy, emotional tone, structural clarity |
+| `uipro redesign <topic>` | Full redesign — propose new style + palette + type system |
+| `uipro harden <path>` | Production hardening — error/empty/loading states, i18n, edges |
+| `uipro lint <path>` | **Deterministic anti-pattern scanner** — regex-based, no LLM, exits non-zero on Critical/High (CI-friendly) |
+| `uipro generate <mode>` | Higgsfield-backed image gen — `hero`, `mobile`, `lifestyle`, `hand` |
+| `uipro brandkit` | 3-image brand kit (logo + palette + type specimen) via Higgsfield |
+
+The verbs are a thin ergonomic layer over a **BM25-searchable knowledge base** of 50+ styles, 161 color palettes, 57 type pairings, 161 product types, 99 UX rules, 25 chart types, and stack-specific guidelines for 12 frameworks. When you need the raw engine, `--domain <domain>` queries are still there underneath.
 
 <p align="center">
   <a href="https://uupm.cc">
