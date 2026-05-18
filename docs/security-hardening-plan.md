@@ -28,7 +28,7 @@
 | **Current focus** | **PR-1** Phase 1 goldens — open PR after PR-0 merges (or stack on fork) |
 | **Last completed task** | **T-016** — Phase 1 complete on `test/phase-1-golden-fixtures` (2026-05-18) |
 | **Active branch** | `test/phase-1-golden-fixtures` (from Phase 0 branch) |
-| **Active PR** | PR-0: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/pull/313 — PR-1 not opened yet |
+| **Active PR** | PR-0: #313 · PR-1: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/pull/314 |
 | **Blockers** | Prefer PR-0 merge first; Phase 1 branch includes Phase 0 commits until rebased |
 | **Notes for next session** | `make test` (24 Python + 4 CLI). Regenerate goldens: `python3 scripts/regenerate_goldens.py`. Next: open PR-1 or rebase onto upstream `main` after #313 merges. |
 
