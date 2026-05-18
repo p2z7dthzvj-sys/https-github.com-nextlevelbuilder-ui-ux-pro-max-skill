@@ -1,5 +1,7 @@
 # Contributing to UI/UX Pro Max
 
+> **For maintainers:** This file is **not** on upstream `main` today. It is **proposed** in the security-hardening PR as a suggested contributor guide. You may merge it as-is, edit it, or drop it; tests and code hardening do not depend on this file.
+
 Thank you for contributing. This project is maintained by [Next Level Builder](https://github.com/nextlevelbuilder). Clear, scoped pull requests help maintainers review quickly and merge with confidence.
 
 ## Before you start
