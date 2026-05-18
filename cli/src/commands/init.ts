@@ -158,6 +158,9 @@ export async function initCommand(options: InitOptions): Promise<void> {
   try {
     // Use legacy ZIP-based install if --legacy flag is set
     if (options.legacy) {
+      spinner.warn(
+        'Legacy mode downloads release archives from GitHub without checksum verification. Prefer default install (template generation).'
+      );
       if (isGlobal) {
         spinner.warn('--global is not supported with --legacy mode, installing locally instead');
       }

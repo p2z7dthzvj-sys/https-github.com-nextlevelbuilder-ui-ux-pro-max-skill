@@ -35,7 +35,7 @@ An AI skill that provides design intelligence for building professional UI/UX ac
 
 ## Contributing
 
-Contributions are welcome via fork and pull request. Please read **[CONTRIBUTING.md](./CONTRIBUTING.md)** for branch naming, PR structure, tests, and `cli/assets/` sync rules. Security hardening work follows **[docs/security-hardening-plan.md](./docs/security-hardening-plan.md)**.
+Contributions are welcome via fork and pull request. Please read **[CONTRIBUTING.md](./CONTRIBUTING.md)** for branch naming, PR structure, tests, and `cli/assets/` sync rules. See **[SECURITY.md](./SECURITY.md)** for trust boundaries and install safety. Security hardening work follows **[docs/security-hardening-plan.md](./docs/security-hardening-plan.md)**.
 
 ## What's New in v2.0
 
