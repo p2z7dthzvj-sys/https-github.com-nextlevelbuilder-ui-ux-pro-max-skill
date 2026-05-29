@@ -7,51 +7,37 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            heading: ['Poppins', 'sans-serif'],
-            body: ['Open Sans', 'sans-serif'],
+            heading: ['Inter', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
           },
           colors: {
-            primary:   { DEFAULT: '#2563EB', light: '#3B82F6', dark: '#1E40AF' },
-            accent:    { DEFAULT: '#EA580C', light: '#F97316' },
-            surface:   { DEFAULT: '#EFF6FF', muted: '#E9EFF8' },
-            border:    '#BFDBFE',
+            primary: { DEFAULT: '#2563EB', light: '#3B82F6', dark: '#1E40AF' },
+            accent:  { DEFAULT: '#EA580C', light: '#F97316' },
+            surface: { DEFAULT: '#EFF6FF', muted: '#E9EFF8' },
+            border:  '#BFDBFE',
+            brand:   { DEFAULT: '#202A36', dark: '#1a2229' },
           },
           animation: {
-            'fade-up':   'fadeUp 0.6s ease forwards',
-            'count-up':  'countUp 2s ease forwards',
-            'float':     'float 6s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
           },
           keyframes: {
-            fadeUp:  { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
-            float:   { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } },
+            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } },
           },
         }
       }
     }
   </script>
   <style>
-    * { box-sizing: border-box; }
-    body { font-family: 'Open Sans', sans-serif; }
-    h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; }
+    *, *::before, *::after { box-sizing: border-box; }
 
-    /* Grid pattern overlay */
-    .hero-grid {
-      background-image:
-        linear-gradient(rgba(37,99,235,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(37,99,235,0.06) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-
-    /* Animated gradient hero bg */
-    .hero-bg {
-      background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #1E40AF 100%);
-    }
+    /* Apply Inter to entire page */
+    body { font-family: 'Inter', sans-serif; }
 
     /* Glowing accent line */
     .accent-line {
@@ -62,9 +48,7 @@
     @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
     /* Card hover lift */
-    .card-hover {
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
+    .card-hover { transition: transform 0.25s ease, box-shadow 0.25s ease; }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(37,99,235,0.15); }
 
     /* Service icon bg */
@@ -76,51 +60,47 @@
     .card-hover:hover .icon-ring { background: linear-gradient(135deg, #2563EB, #3B82F6); border-color: #2563EB; }
     .card-hover:hover .icon-ring svg { stroke: #fff; }
 
-    /* Stat counter animation */
+    /* Stat counter */
     .stat-num { font-variant-numeric: tabular-nums; }
 
     /* Scroll-triggered fade */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Nav glassmorphism scroll */
-    .nav-scroll { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 24px rgba(37,99,235,0.10); }
+    /* Nav glassmorphism on scroll */
+    .nav-scroll { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); box-shadow: 0 1px 24px rgba(0,0,0,0.08); }
 
-    /* Process connector line */
+    /* Process connector */
     .process-line { background: linear-gradient(90deg, #2563EB, #3B82F6, #EA580C); }
 
     /* Testimonial card */
-    .testimonial-card { border-left: 3px solid #2563EB; }
+    .testimonial-card { border-left: 3px solid #202A36; }
 
-    /* CTA diagonal */
+    /* CTA section — dark brand gradient */
     .cta-bg {
-      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #1D4ED8 100%);
+      background: linear-gradient(135deg, #111827 0%, #202A36 55%, #2d3748 100%);
       position: relative;
       overflow: hidden;
     }
     .cta-bg::before {
       content: '';
       position: absolute;
-      top: -60%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
+      top: -60%; right: -10%;
+      width: 500px; height: 500px;
       border-radius: 50%;
-      background: rgba(234,88,12,0.12);
+      background: rgba(234,88,12,0.10);
     }
     .cta-bg::after {
       content: '';
       position: absolute;
-      bottom: -40%;
-      left: -5%;
-      width: 320px;
-      height: 320px;
+      bottom: -40%; left: -5%;
+      width: 320px; height: 320px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.04);
     }
 
     /* Focus ring */
-    :focus-visible { outline: 2px solid #2563EB; outline-offset: 3px; border-radius: 4px; }
+    :focus-visible { outline: 2px solid #202A36; outline-offset: 3px; border-radius: 4px; }
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
@@ -131,189 +111,149 @@
     .mobile-menu { display: none; }
     .mobile-menu.open { display: block; }
 
-    /* Smooth scroll */
     html { scroll-behavior: smooth; }
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
 
+
 <!-- ═══════════════════════════════════════════
-     NAVIGATION
+     NAVIGATION  (SkyElite style)
 ═══════════════════════════════════════════ -->
 <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <nav class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-18 py-4">
+
+  <nav class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
 
     <!-- Logo -->
     <a href="#" class="flex items-center gap-2.5 group" aria-label="SwiftFreight home">
-      <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center shadow-md group-hover:bg-primary-dark transition-colors duration-200">
+      <div class="w-9 h-9 bg-brand rounded-lg flex items-center justify-center shadow-md group-hover:bg-brand-dark transition-colors duration-200">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
         </svg>
       </div>
-      <span class="font-heading font-700 text-xl text-white group-hover:text-blue-100 transition-colors" id="logo-text">
+      <span class="text-2xl font-semibold text-gray-900" id="logo-text">
         Swift<span class="text-accent">Freight</span>
       </span>
     </a>
 
-    <!-- Desktop nav -->
-    <ul class="hidden lg:flex items-center gap-8" role="list">
-      <li><a href="#services" class="text-sm font-medium text-blue-100 hover:text-white transition-colors duration-200 cursor-pointer">Services</a></li>
-      <li><a href="#how-it-works" class="text-sm font-medium text-blue-100 hover:text-white transition-colors duration-200 cursor-pointer">How It Works</a></li>
-      <li><a href="#testimonials" class="text-sm font-medium text-blue-100 hover:text-white transition-colors duration-200 cursor-pointer">Clients</a></li>
-      <li><a href="#contact" class="text-sm font-medium text-blue-100 hover:text-white transition-colors duration-200 cursor-pointer">Contact</a></li>
+    <!-- Desktop nav links -->
+    <ul class="hidden md:flex items-center gap-8" role="list">
+      <li><a href="#services"      class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors duration-200 cursor-pointer">Services</a></li>
+      <li><a href="#how-it-works"  class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors duration-200 cursor-pointer">How It Works</a></li>
+      <li><a href="#testimonials"  class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors duration-200 cursor-pointer">Clients</a></li>
+      <li><a href="#contact"       class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors duration-200 cursor-pointer">Contact</a></li>
     </ul>
 
     <!-- CTA + mobile toggle -->
     <div class="flex items-center gap-4">
-      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 cursor-pointer shadow-lg hover:shadow-orange-400/30 hover:-translate-y-0.5">
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 cursor-pointer bg-brand hover:bg-brand-dark">
         Get a Quote
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <button id="mobile-toggle" aria-label="Open menu" aria-expanded="false" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
+      <button id="mobile-toggle" aria-label="Open menu" aria-expanded="false" class="md:hidden text-gray-900 p-1 -mr-1 cursor-pointer">
         <svg id="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <svg id="icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
   </nav>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="mobile-menu lg:hidden bg-primary-dark/95 backdrop-blur border-t border-blue-700">
-    <ul class="max-w-7xl mx-auto px-6 py-4 space-y-1" role="list">
-      <li><a href="#services" class="block text-blue-100 hover:text-white py-2.5 text-sm font-medium transition-colors cursor-pointer">Services</a></li>
-      <li><a href="#how-it-works" class="block text-blue-100 hover:text-white py-2.5 text-sm font-medium transition-colors cursor-pointer">How It Works</a></li>
-      <li><a href="#testimonials" class="block text-blue-100 hover:text-white py-2.5 text-sm font-medium transition-colors cursor-pointer">Clients</a></li>
-      <li><a href="#contact" class="block text-blue-100 hover:text-white py-2.5 text-sm font-medium transition-colors cursor-pointer">Contact</a></li>
-      <li class="pt-2"><a href="#contact" class="inline-flex items-center gap-2 bg-accent text-white text-sm font-semibold px-5 py-2.5 rounded-lg cursor-pointer">Get a Quote →</a></li>
-    </ul>
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="mobile-menu md:hidden mx-4 mb-3 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-100/60">
+    <div class="flex flex-col">
+      <a href="#services"     class="px-6 py-3 text-sm font-medium text-gray-900 hover:text-gray-600 hover:bg-gray-50 transition-colors border-b border-gray-100 cursor-pointer">Services</a>
+      <a href="#how-it-works" class="px-6 py-3 text-sm font-medium text-gray-900 hover:text-gray-600 hover:bg-gray-50 transition-colors border-b border-gray-100 cursor-pointer">How It Works</a>
+      <a href="#testimonials" class="px-6 py-3 text-sm font-medium text-gray-900 hover:text-gray-600 hover:bg-gray-50 transition-colors border-b border-gray-100 cursor-pointer">Clients</a>
+      <a href="#contact"      class="px-6 py-3 text-sm font-medium text-gray-900 hover:text-gray-600 hover:bg-gray-50 transition-colors border-b border-gray-100 cursor-pointer">Contact</a>
+      <div class="px-6 py-4">
+        <a href="#contact" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors cursor-pointer">
+          Get a Quote →
+        </a>
+      </div>
+    </div>
   </div>
+
 </header>
 
 
 <!-- ═══════════════════════════════════════════
-     HERO
+     HERO  (SkyElite design)
 ═══════════════════════════════════════════ -->
-<section class="hero-bg hero-grid relative min-h-screen flex flex-col justify-center pt-18 overflow-hidden" aria-label="Hero">
+<section class="relative h-screen overflow-hidden" aria-label="Hero">
 
-  <!-- Floating blobs -->
-  <div class="absolute top-20 right-0 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute bottom-20 left-0 w-80 h-80 rounded-full bg-accent/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <!-- Video background -->
+  <video
+    autoplay muted loop playsinline
+    class="absolute inset-0 w-full h-full object-cover"
+  >
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_091828_e240eb17-6edc-4129-ad9d-98678e3fd238.mp4" type="video/mp4" />
+  </video>
 
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+  <!-- Content wrapper -->
+  <div class="relative h-full flex flex-col">
 
-    <!-- Left copy -->
-    <div>
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-blue-100 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm">
-        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true"></span>
-        Trusted by 2,400+ businesses worldwide
+    <!-- Main content area -->
+    <main class="flex-1 flex items-center justify-center">
+      <div class="-mt-80 text-center px-6">
+
+        <!-- Trust badge -->
+        <div class="inline-flex items-center gap-2 bg-white/75 backdrop-blur-sm border border-gray-200/80 text-gray-600 text-xs font-semibold px-4 py-1.5 rounded-full mb-5">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true"></span>
+          Trusted by 2,400+ businesses worldwide
+        </div>
+
+        <!-- Eyebrow label -->
+        <p class="text-sm font-semibold text-gray-600 tracking-wider uppercase mb-4">
+          GLOBAL LOGISTICS
+        </p>
+
+        <!-- Two-line heading — overlapping SkyElite style -->
+        <h1>
+          <span class="block text-6xl md:text-7xl lg:text-8xl font-normal text-gray-500 leading-none tracking-tighter">
+            Deliver.
+          </span>
+          <span
+            class="block text-6xl md:text-7xl lg:text-8xl font-normal leading-none tracking-tighter"
+            style="color: #202A36; margin-top: -12px;"
+          >
+            Anywhere.
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mt-6 mb-6">
+          End-to-end freight and logistics solutions built for speed, reliability, and full supply chain visibility — from first mile to last.
+        </p>
+
+        <!-- CTA buttons — rounded-full -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+          <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-gray-200/90 hover:bg-gray-300 text-gray-800 font-medium transition-colors duration-200 cursor-pointer backdrop-blur-sm text-sm">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            See How It Works
+          </a>
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-white font-medium transition-colors duration-200 cursor-pointer text-sm bg-brand hover:bg-brand-dark">
+            Get a Free Quote
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Trust signals -->
+        <div class="flex flex-wrap gap-6 text-gray-600 text-sm justify-center">
+          <span class="flex items-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            ISO 9001 Certified
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Real-Time Tracking
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            24/7 Support
+          </span>
+        </div>
+
       </div>
-
-      <h1 class="font-heading text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
-        Deliver<br/>
-        <span class="text-accent">Anything</span><br/>
-        <span class="text-blue-200">Anywhere</span>
-      </h1>
-
-      <p class="text-blue-100 text-lg leading-relaxed mb-8 max-w-md">
-        End-to-end freight and logistics solutions built for speed, reliability, and full supply chain visibility — from first mile to last.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 mb-12">
-        <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 cursor-pointer shadow-xl hover:shadow-orange-500/40 hover:-translate-y-0.5 text-base">
-          Get a Free Quote
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white/60 text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 cursor-pointer hover:bg-white/10 text-base">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          See How It Works
-        </a>
-      </div>
-
-      <!-- Trust signals -->
-      <div class="flex flex-wrap gap-6 text-blue-200 text-sm">
-        <span class="flex items-center gap-1.5">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          ISO 9001 Certified
-        </span>
-        <span class="flex items-center gap-1.5">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Real-Time Tracking
-        </span>
-        <span class="flex items-center gap-1.5">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          24/7 Support
-        </span>
-      </div>
-    </div>
-
-    <!-- Right — stat cards floating -->
-    <div class="relative hidden lg:flex items-center justify-center">
-
-      <!-- Main illustration card -->
-      <div class="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 w-full max-w-sm shadow-2xl">
-        <!-- Route visual -->
-        <div class="mb-6 flex items-center gap-3">
-          <div class="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          </div>
-          <div>
-            <div class="text-white font-semibold text-sm">Shipment #SF-892401</div>
-            <div class="text-blue-200 text-xs mt-0.5">En route · Est. arrival 2h</div>
-          </div>
-          <div class="ml-auto">
-            <span class="inline-block bg-green-400/20 text-green-300 text-xs font-semibold px-2.5 py-1 rounded-full">On Time</span>
-          </div>
-        </div>
-
-        <!-- Progress track -->
-        <div class="relative mb-6">
-          <div class="h-1 bg-white/10 rounded-full">
-            <div class="h-1 bg-gradient-to-r from-accent to-green-400 rounded-full" style="width:72%"></div>
-          </div>
-          <div class="flex justify-between text-blue-300 text-xs mt-2">
-            <span>Shanghai</span><span>Dubai</span><span>London</span>
-          </div>
-        </div>
-
-        <!-- Mini stats -->
-        <div class="grid grid-cols-3 gap-3">
-          <div class="bg-white/5 rounded-xl p-3 text-center">
-            <div class="text-white font-bold text-lg stat-num">72%</div>
-            <div class="text-blue-300 text-xs mt-0.5">Progress</div>
-          </div>
-          <div class="bg-white/5 rounded-xl p-3 text-center">
-            <div class="text-white font-bold text-lg stat-num">4,280</div>
-            <div class="text-blue-300 text-xs mt-0.5">km left</div>
-          </div>
-          <div class="bg-white/5 rounded-xl p-3 text-center">
-            <div class="text-white font-bold text-lg stat-num">99.2%</div>
-            <div class="text-blue-300 text-xs mt-0.5">On-time</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Floating badge top-right -->
-      <div class="absolute -top-6 -right-4 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float">
-        <div class="w-9 h-9 bg-surface rounded-xl flex items-center justify-center">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div>
-          <div class="text-gray-900 font-semibold text-sm">150+ Countries</div>
-          <div class="text-gray-400 text-xs">Global coverage</div>
-        </div>
-      </div>
-
-      <!-- Floating badge bottom-left -->
-      <div class="absolute -bottom-6 -left-4 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float" style="animation-delay:1.5s">
-        <div class="w-9 h-9 bg-green-50 rounded-xl flex items-center justify-center">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div>
-          <div class="text-gray-900 font-semibold text-sm">98.7% Delivered</div>
-          <div class="text-gray-400 text-xs">On-time rate</div>
-        </div>
-      </div>
-    </div>
+    </main>
   </div>
 
   <!-- Bottom wave -->
@@ -328,17 +268,16 @@
 <!-- ═══════════════════════════════════════════
      PARTNER LOGOS
 ═══════════════════════════════════════════ -->
-<section class="bg-white py-12 border-b border-surface-muted" aria-label="Partners">
+<section class="bg-white py-12 border-b border-gray-100" aria-label="Partners">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <p class="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest mb-8">Trusted by industry leaders</p>
-    <div class="flex flex-wrap items-center justify-center gap-10 opacity-50 grayscale">
-      <!-- Logo placeholders as styled wordmarks -->
-      <span class="font-heading font-bold text-xl text-gray-600">AMAZON</span>
-      <span class="font-heading font-bold text-xl text-gray-600">NESTLÉ</span>
-      <span class="font-heading font-bold text-xl text-gray-600">SAMSUNG</span>
-      <span class="font-heading font-bold text-xl text-gray-600">H&amp;M</span>
-      <span class="font-heading font-bold text-xl text-gray-600">SIEMENS</span>
-      <span class="font-heading font-bold text-xl text-gray-600">UNILEVER</span>
+    <div class="flex flex-wrap items-center justify-center gap-10 opacity-40 grayscale">
+      <span class="font-semibold text-xl text-gray-700 tracking-tight">AMAZON</span>
+      <span class="font-semibold text-xl text-gray-700 tracking-tight">NESTLÉ</span>
+      <span class="font-semibold text-xl text-gray-700 tracking-tight">SAMSUNG</span>
+      <span class="font-semibold text-xl text-gray-700 tracking-tight">H&amp;M</span>
+      <span class="font-semibold text-xl text-gray-700 tracking-tight">SIEMENS</span>
+      <span class="font-semibold text-xl text-gray-700 tracking-tight">UNILEVER</span>
     </div>
   </div>
 </section>
@@ -349,30 +288,29 @@
 ═══════════════════════════════════════════ -->
 <section class="bg-white py-20 lg:py-28" aria-label="Key statistics">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
       <div class="reveal text-center lg:text-left" data-delay="0">
         <div class="accent-line h-1 w-12 rounded-full mb-4 mx-auto lg:mx-0" aria-hidden="true"></div>
-        <div class="font-heading font-extrabold text-4xl lg:text-5xl text-primary stat-num" data-target="2400">2,400<span class="text-accent">+</span></div>
+        <div class="font-bold text-4xl lg:text-5xl text-primary stat-num">2,400<span class="text-accent">+</span></div>
         <div class="text-gray-500 text-sm font-medium mt-2">Global Clients</div>
       </div>
 
       <div class="reveal text-center lg:text-left" data-delay="100">
         <div class="accent-line h-1 w-12 rounded-full mb-4 mx-auto lg:mx-0" aria-hidden="true"></div>
-        <div class="font-heading font-extrabold text-4xl lg:text-5xl text-primary stat-num">150<span class="text-accent">+</span></div>
+        <div class="font-bold text-4xl lg:text-5xl text-primary stat-num">150<span class="text-accent">+</span></div>
         <div class="text-gray-500 text-sm font-medium mt-2">Countries Served</div>
       </div>
 
       <div class="reveal text-center lg:text-left" data-delay="200">
         <div class="accent-line h-1 w-12 rounded-full mb-4 mx-auto lg:mx-0" aria-hidden="true"></div>
-        <div class="font-heading font-extrabold text-4xl lg:text-5xl text-primary stat-num">98.7<span class="text-accent">%</span></div>
+        <div class="font-bold text-4xl lg:text-5xl text-primary stat-num">98.7<span class="text-accent">%</span></div>
         <div class="text-gray-500 text-sm font-medium mt-2">On-Time Delivery</div>
       </div>
 
       <div class="reveal text-center lg:text-left" data-delay="300">
         <div class="accent-line h-1 w-12 rounded-full mb-4 mx-auto lg:mx-0" aria-hidden="true"></div>
-        <div class="font-heading font-extrabold text-4xl lg:text-5xl text-primary stat-num">18<span class="text-accent">+</span></div>
+        <div class="font-bold text-4xl lg:text-5xl text-primary stat-num">18<span class="text-accent">+</span></div>
         <div class="text-gray-500 text-sm font-medium mt-2">Years of Excellence</div>
       </div>
     </div>
@@ -386,22 +324,20 @@
 <section id="services" class="bg-surface py-20 lg:py-28" aria-label="Our services">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
-    <!-- Section header -->
     <div class="text-center max-w-2xl mx-auto mb-16 reveal">
       <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-3">What We Offer</span>
-      <h2 class="font-heading font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Comprehensive Logistics<br/><span class="text-primary">Solutions</span></h2>
+      <h2 class="font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Comprehensive Logistics<br/><span class="text-primary">Solutions</span></h2>
       <p class="text-gray-500 text-base leading-relaxed">From a single parcel to full container loads, we cover every dimension of global freight movement.</p>
     </div>
 
-    <!-- Service cards grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Air Freight -->
       <article class="bg-white rounded-2xl p-7 card-hover reveal cursor-default" data-delay="0">
-        <div class="icon-ring w-13 h-13 rounded-xl flex items-center justify-center mb-5 w-12 h-12" style="width:48px;height:48px">
+        <div class="icon-ring rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
         </div>
-        <h3 class="font-heading font-semibold text-lg text-gray-900 mb-2">Air Freight</h3>
+        <h3 class="font-semibold text-lg text-gray-900 mb-2">Air Freight</h3>
         <p class="text-gray-500 text-sm leading-relaxed mb-4">Express and standard air cargo services connecting major hubs worldwide with guaranteed transit times.</p>
         <a href="#contact" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:gap-2.5 transition-all duration-200 cursor-pointer">
           Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -410,10 +346,10 @@
 
       <!-- Ocean Freight -->
       <article class="bg-white rounded-2xl p-7 card-hover reveal cursor-default" data-delay="80">
-        <div class="icon-ring w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
+        <div class="icon-ring rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20a2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1"/><path d="M4 18l2-7 6-2 6 2 2 7"/><path d="M12 9V3"/><path d="M8 9l4-3 4 3"/></svg>
         </div>
-        <h3 class="font-heading font-semibold text-lg text-gray-900 mb-2">Ocean Freight</h3>
+        <h3 class="font-semibold text-lg text-gray-900 mb-2">Ocean Freight</h3>
         <p class="text-gray-500 text-sm leading-relaxed mb-4">FCL and LCL solutions for cost-effective long-haul cargo across all major international ports.</p>
         <a href="#contact" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:gap-2.5 transition-all duration-200 cursor-pointer">
           Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -422,10 +358,10 @@
 
       <!-- Road Freight -->
       <article class="bg-white rounded-2xl p-7 card-hover reveal cursor-default" data-delay="160">
-        <div class="icon-ring w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
+        <div class="icon-ring rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
         </div>
-        <h3 class="font-heading font-semibold text-lg text-gray-900 mb-2">Road Freight</h3>
+        <h3 class="font-semibold text-lg text-gray-900 mb-2">Road Freight</h3>
         <p class="text-gray-500 text-sm leading-relaxed mb-4">FTL and LTL trucking solutions covering domestic and cross-border routes with real-time GPS tracking.</p>
         <a href="#contact" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:gap-2.5 transition-all duration-200 cursor-pointer">
           Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -434,10 +370,10 @@
 
       <!-- Warehousing -->
       <article class="bg-white rounded-2xl p-7 card-hover reveal cursor-default" data-delay="0">
-        <div class="icon-ring w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
+        <div class="icon-ring rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
-        <h3 class="font-heading font-semibold text-lg text-gray-900 mb-2">Warehousing</h3>
+        <h3 class="font-semibold text-lg text-gray-900 mb-2">Warehousing</h3>
         <p class="text-gray-500 text-sm leading-relaxed mb-4">Strategic storage solutions with inventory management, pick-and-pack, and cross-docking services.</p>
         <a href="#contact" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:gap-2.5 transition-all duration-200 cursor-pointer">
           Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -446,10 +382,10 @@
 
       <!-- Customs Clearance -->
       <article class="bg-white rounded-2xl p-7 card-hover reveal cursor-default" data-delay="80">
-        <div class="icon-ring w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
+        <div class="icon-ring rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
-        <h3 class="font-heading font-semibold text-lg text-gray-900 mb-2">Customs Clearance</h3>
+        <h3 class="font-semibold text-lg text-gray-900 mb-2">Customs Clearance</h3>
         <p class="text-gray-500 text-sm leading-relaxed mb-4">Expert customs brokerage and compliance to navigate regulatory requirements across all markets.</p>
         <a href="#contact" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:gap-2.5 transition-all duration-200 cursor-pointer">
           Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -457,12 +393,12 @@
       </article>
 
       <!-- Supply Chain -->
-      <article class="bg-primary rounded-2xl p-7 card-hover reveal cursor-default" data-delay="160">
+      <article class="bg-brand rounded-2xl p-7 card-hover reveal cursor-default" data-delay="160">
         <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mb-5" style="width:48px;height:48px">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
         </div>
-        <h3 class="font-heading font-semibold text-lg text-white mb-2">Supply Chain</h3>
-        <p class="text-blue-100 text-sm leading-relaxed mb-4">End-to-end visibility and optimization across your entire supply chain, powered by real-time data.</p>
+        <h3 class="font-semibold text-lg text-white mb-2">Supply Chain</h3>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">End-to-end visibility and optimization across your entire supply chain, powered by real-time data.</p>
         <a href="#contact" class="inline-flex items-center gap-1.5 text-white text-sm font-semibold hover:gap-2.5 transition-all duration-200 cursor-pointer">
           Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -480,15 +416,12 @@
 
     <div class="text-center max-w-2xl mx-auto mb-16 reveal">
       <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-3">The Process</span>
-      <h2 class="font-heading font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Ship in <span class="text-primary">4 Simple Steps</span></h2>
+      <h2 class="font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Ship in <span class="text-primary">4 Simple Steps</span></h2>
       <p class="text-gray-500 text-base leading-relaxed">We've streamlined global freight into a frictionless experience.</p>
     </div>
 
-    <!-- Steps -->
     <div class="relative">
-
-      <!-- Connector line (desktop) -->
-      <div class="hidden lg:block absolute top-10 left-1/8 right-1/8 h-0.5 process-line opacity-30 rounded-full" style="top:40px;left:12.5%;right:12.5%" aria-hidden="true"></div>
+      <div class="hidden lg:block absolute h-0.5 process-line opacity-30 rounded-full" style="top:40px;left:12.5%;right:12.5%" aria-hidden="true"></div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
@@ -497,7 +430,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
             <span class="absolute -top-2 -right-2 w-6 h-6 bg-accent text-white text-xs font-bold rounded-full flex items-center justify-center" aria-label="Step 1">1</span>
           </div>
-          <h3 class="font-heading font-semibold text-gray-900 mb-2">Request a Quote</h3>
+          <h3 class="font-semibold text-gray-900 mb-2">Request a Quote</h3>
           <p class="text-gray-500 text-sm leading-relaxed">Fill in your shipment details and receive a competitive, transparent quote within minutes.</p>
         </div>
 
@@ -506,7 +439,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             <span class="absolute -top-2 -right-2 w-6 h-6 bg-accent text-white text-xs font-bold rounded-full flex items-center justify-center" aria-label="Step 2">2</span>
           </div>
-          <h3 class="font-heading font-semibold text-gray-900 mb-2">Confirm & Book</h3>
+          <h3 class="font-semibold text-gray-900 mb-2">Confirm & Book</h3>
           <p class="text-gray-500 text-sm leading-relaxed">Approve your quote, upload documentation, and your dedicated logistics manager takes it from there.</p>
         </div>
 
@@ -515,7 +448,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             <span class="absolute -top-2 -right-2 w-6 h-6 bg-accent text-white text-xs font-bold rounded-full flex items-center justify-center" aria-label="Step 3">3</span>
           </div>
-          <h3 class="font-heading font-semibold text-gray-900 mb-2">Track in Real Time</h3>
+          <h3 class="font-semibold text-gray-900 mb-2">Track in Real Time</h3>
           <p class="text-gray-500 text-sm leading-relaxed">Follow your shipment every step of the way with live GPS updates and proactive notifications.</p>
         </div>
 
@@ -524,7 +457,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             <span class="absolute -top-2 -right-2 w-6 h-6 bg-accent text-white text-xs font-bold rounded-full flex items-center justify-center" aria-label="Step 4">4</span>
           </div>
-          <h3 class="font-heading font-semibold text-gray-900 mb-2">Delivered</h3>
+          <h3 class="font-semibold text-gray-900 mb-2">Delivered</h3>
           <p class="text-gray-500 text-sm leading-relaxed">Your cargo arrives on schedule with proof of delivery and instant digital confirmation.</p>
         </div>
 
@@ -542,13 +475,12 @@
 
     <div class="text-center max-w-2xl mx-auto mb-16 reveal">
       <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-3">Client Stories</span>
-      <h2 class="font-heading font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Trusted by <span class="text-primary">Supply Chain Leaders</span></h2>
+      <h2 class="font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Trusted by <span class="text-primary">Supply Chain Leaders</span></h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <blockquote class="testimonial-card bg-white rounded-2xl p-7 shadow-sm reveal card-hover" data-delay="0">
-        <!-- Stars -->
         <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -558,7 +490,7 @@
         </div>
         <p class="text-gray-600 text-sm leading-relaxed mb-6 italic">"SwiftFreight transformed our cross-border operations. Our delivery times dropped by 34% and we now have full visibility across every shipment. Truly a game-changer."</p>
         <footer class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" aria-hidden="true">SK</div>
+          <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" aria-hidden="true">SK</div>
           <div>
             <div class="font-semibold text-gray-900 text-sm">Sarah Kim</div>
             <div class="text-gray-400 text-xs">VP Supply Chain, Nexus Retail</div>
@@ -594,7 +526,7 @@
         </div>
         <p class="text-gray-600 text-sm leading-relaxed mb-6 italic">"We scaled from regional to global distribution in under 6 months thanks to SwiftFreight's warehousing network. The ROI has been extraordinary — 3× revenue from new markets."</p>
         <footer class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-primary-dark rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" aria-hidden="true">AL</div>
+          <div class="w-10 h-10 bg-brand-dark rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" aria-hidden="true">AL</div>
           <div>
             <div class="font-semibold text-gray-900 text-sm">Amara Laurent</div>
             <div class="text-gray-400 text-xs">COO, Verdant Health Products</div>
@@ -607,25 +539,25 @@
 
 
 <!-- ═══════════════════════════════════════════
-     CTA BANNER
+     CTA BANNER  (dark #202A36 brand gradient)
 ═══════════════════════════════════════════ -->
 <section class="cta-bg py-20 lg:py-28" aria-label="Call to action">
   <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10 reveal">
-    <span class="inline-block text-blue-300 font-semibold text-sm uppercase tracking-widest mb-4">Ready to Ship?</span>
-    <h2 class="font-heading font-extrabold text-3xl lg:text-5xl text-white mb-6 leading-tight">
+    <span class="inline-block text-gray-400 font-semibold text-sm uppercase tracking-widest mb-4">Ready to Ship?</span>
+    <h2 class="font-bold text-3xl lg:text-5xl text-white mb-6 leading-tight">
       Your Cargo, Our Commitment.<br/>
       <span class="text-accent">Delivered.</span>
     </h2>
-    <p class="text-blue-200 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+    <p class="text-gray-300 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
       Join 2,400+ businesses moving freight smarter. Get your free quote in under 2 minutes.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 cursor-pointer shadow-2xl hover:shadow-orange-500/40 hover:-translate-y-0.5 text-base">
+      <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-white font-bold px-8 py-3.5 rounded-full transition-colors duration-200 cursor-pointer text-base">
         Get a Free Quote
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="tel:+18005551234" class="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 cursor-pointer text-base">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <a href="tel:+18005551234" class="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white/70 text-white font-medium px-8 py-3.5 rounded-full transition-colors duration-200 cursor-pointer text-base">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         +1 (800) 555-1234
       </a>
     </div>
@@ -639,10 +571,9 @@
 <section id="contact" class="bg-white py-20 lg:py-28" aria-label="Contact us">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start">
 
-    <!-- Left info -->
     <div class="reveal">
       <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-3">Get in Touch</span>
-      <h2 class="font-heading font-bold text-3xl lg:text-4xl text-gray-900 mb-6">Let's Move Your <span class="text-primary">Business Forward</span></h2>
+      <h2 class="font-bold text-3xl lg:text-4xl text-gray-900 mb-6">Let's Move Your <span class="text-primary">Business Forward</span></h2>
       <p class="text-gray-500 leading-relaxed mb-10">Our logistics experts are ready to build a solution tailored to your freight requirements. Reach out today.</p>
 
       <ul class="space-y-6" role="list">
@@ -685,34 +616,33 @@
       </ul>
     </div>
 
-    <!-- Right form -->
     <div class="bg-surface rounded-2xl p-8 border border-border reveal" data-delay="120">
-      <h3 class="font-heading font-semibold text-xl text-gray-900 mb-6">Request a Quote</h3>
+      <h3 class="font-semibold text-xl text-gray-900 mb-6">Request a Quote</h3>
 
       <form id="contact-form" novalidate aria-label="Quote request form">
         <div class="grid sm:grid-cols-2 gap-4 mb-4">
           <div>
             <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1.5">First Name <span class="text-accent" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
             <input type="text" id="first-name" name="first-name" autocomplete="given-name" required placeholder="John"
-              class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" />
+              class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-200" />
           </div>
           <div>
             <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1.5">Last Name <span class="text-accent" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
             <input type="text" id="last-name" name="last-name" autocomplete="family-name" required placeholder="Smith"
-              class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" />
+              class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-200" />
           </div>
         </div>
 
         <div class="mb-4">
           <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">Work Email <span class="text-accent" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
           <input type="email" id="email" name="email" autocomplete="email" required placeholder="john@company.com"
-            class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" />
+            class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-200" />
         </div>
 
         <div class="mb-4">
           <label for="service" class="block text-sm font-medium text-gray-700 mb-1.5">Service Required <span class="text-accent" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
           <select id="service" name="service" required
-            class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 cursor-pointer">
+            class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-200 cursor-pointer">
             <option value="" disabled selected>Select a service…</option>
             <option value="air">Air Freight</option>
             <option value="ocean">Ocean Freight</option>
@@ -726,23 +656,22 @@
         <div class="mb-4">
           <label for="origin" class="block text-sm font-medium text-gray-700 mb-1.5">Origin & Destination</label>
           <input type="text" id="origin" name="origin" placeholder="e.g. Shanghai → Los Angeles"
-            class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" />
+            class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-200" />
         </div>
 
         <div class="mb-6">
           <label for="message" class="block text-sm font-medium text-gray-700 mb-1.5">Shipment Details</label>
           <textarea id="message" name="message" rows="3" placeholder="Weight, dimensions, cargo type, special handling needs…"
-            class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"></textarea>
+            class="w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-200 resize-none"></textarea>
         </div>
 
         <button type="submit"
-          class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3.5 rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/25">
+          class="w-full bg-brand hover:bg-brand-dark text-white font-semibold py-3.5 rounded-xl transition-colors duration-200 cursor-pointer flex items-center justify-center gap-2">
           <span id="btn-text">Send Quote Request</span>
           <svg id="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           <svg id="btn-spinner" class="hidden animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
         </button>
 
-        <!-- Success message -->
         <div id="form-success" class="hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-xl" role="alert" aria-live="polite">
           <div class="flex items-center gap-2 text-green-700 text-sm font-semibold">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -762,32 +691,29 @@
 <footer class="bg-gray-950 text-gray-400" role="contentinfo">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-    <!-- Brand -->
     <div class="lg:col-span-1">
       <div class="flex items-center gap-2.5 mb-4">
-        <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
+        <div class="w-9 h-9 bg-brand rounded-lg flex items-center justify-center">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
         </div>
-        <span class="font-heading font-bold text-xl text-white">Swift<span class="text-accent">Freight</span></span>
+        <span class="font-semibold text-xl text-white">Swift<span class="text-accent">Freight</span></span>
       </div>
       <p class="text-sm leading-relaxed mb-6">Global logistics solutions delivering speed, reliability, and full supply chain visibility.</p>
-      <!-- Social links -->
       <div class="flex gap-3">
-        <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer" aria-label="LinkedIn">
+        <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-brand rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer" aria-label="LinkedIn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer" aria-label="Twitter / X">
+        <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-brand rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer" aria-label="Twitter / X">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer" aria-label="Facebook">
+        <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-brand rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer" aria-label="Facebook">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
         </a>
       </div>
     </div>
 
-    <!-- Services -->
     <div>
-      <h4 class="font-heading font-semibold text-white text-sm mb-5">Services</h4>
+      <h4 class="font-semibold text-white text-sm mb-5">Services</h4>
       <ul class="space-y-3 text-sm" role="list">
         <li><a href="#services" class="hover:text-white transition-colors duration-200 cursor-pointer">Air Freight</a></li>
         <li><a href="#services" class="hover:text-white transition-colors duration-200 cursor-pointer">Ocean Freight</a></li>
@@ -798,9 +724,8 @@
       </ul>
     </div>
 
-    <!-- Company -->
     <div>
-      <h4 class="font-heading font-semibold text-white text-sm mb-5">Company</h4>
+      <h4 class="font-semibold text-white text-sm mb-5">Company</h4>
       <ul class="space-y-3 text-sm" role="list">
         <li><a href="#" class="hover:text-white transition-colors duration-200 cursor-pointer">About Us</a></li>
         <li><a href="#" class="hover:text-white transition-colors duration-200 cursor-pointer">Careers</a></li>
@@ -811,15 +736,13 @@
       </ul>
     </div>
 
-    <!-- Legal + certifications -->
     <div>
-      <h4 class="font-heading font-semibold text-white text-sm mb-5">Compliance</h4>
+      <h4 class="font-semibold text-white text-sm mb-5">Compliance</h4>
       <ul class="space-y-3 text-sm" role="list">
         <li><a href="#" class="hover:text-white transition-colors duration-200 cursor-pointer">Privacy Policy</a></li>
         <li><a href="#" class="hover:text-white transition-colors duration-200 cursor-pointer">Terms of Service</a></li>
         <li><a href="#" class="hover:text-white transition-colors duration-200 cursor-pointer">Cookie Policy</a></li>
       </ul>
-      <!-- Certifications -->
       <div class="mt-6 space-y-2">
         <div class="inline-flex items-center gap-2 bg-gray-800 text-gray-300 text-xs px-3 py-1.5 rounded-lg">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -833,7 +756,6 @@
     </div>
   </div>
 
-  <!-- Bottom bar -->
   <div class="border-t border-gray-800">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
       <p class="text-xs text-gray-500">&copy; 2026 SwiftFreight Global Logistics LLC. All rights reserved.</p>
@@ -847,35 +769,19 @@
      JAVASCRIPT
 ═══════════════════════════════════════════ -->
 <script>
-  // ── Nav scroll style ──────────────────────
+  // ── Nav scroll (SkyElite: just toggle bg, no text-color swap) ─
   const navbar = document.getElementById('navbar');
-  const logoText = document.getElementById('logo-text');
   let ticking = false;
 
-  function updateNav() {
-    const scrolled = window.scrollY > 60;
-    navbar.className = scrolled
-      ? 'fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-scroll'
-      : 'fixed top-0 left-0 right-0 z-50 transition-all duration-300';
-    if (scrolled) {
-      logoText.classList.replace('text-white', 'text-gray-900');
-      document.querySelectorAll('nav ul li a').forEach(a => {
-        a.classList.replace('text-blue-100', 'text-gray-600');
-        a.classList.replace('hover:text-white', 'hover:text-primary');
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        navbar.classList.toggle('nav-scroll', window.scrollY > 60);
+        ticking = false;
       });
-      document.getElementById('mobile-toggle').classList.replace('text-white', 'text-gray-700');
-    } else {
-      logoText.classList.replace('text-gray-900', 'text-white');
-      document.querySelectorAll('nav ul li a').forEach(a => {
-        a.classList.replace('text-gray-600', 'text-blue-100');
-        a.classList.replace('hover:text-primary', 'hover:text-white');
-      });
-      document.getElementById('mobile-toggle').classList.replace('text-gray-700', 'text-white');
+      ticking = true;
     }
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(updateNav); ticking = true; } }, { passive: true });
+  }, { passive: true });
 
   // ── Mobile menu toggle ────────────────────
   const mobileToggle = document.getElementById('mobile-toggle');
@@ -890,7 +796,6 @@
     iconClose.classList.toggle('hidden', !open);
   });
 
-  // Close mobile menu on link click
   mobileMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       mobileMenu.classList.remove('open');
@@ -900,8 +805,7 @@
     });
   });
 
-  // ── Scroll reveal (IntersectionObserver) ──
-  const reveals = document.querySelectorAll('.reveal');
+  // ── Scroll reveal ─────────────────────────
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -912,9 +816,9 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-  reveals.forEach(el => revealObs.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  // ── Form submission (demo) ─────────────────
+  // ── Contact form ──────────────────────────
   const form        = document.getElementById('contact-form');
   const btnText     = document.getElementById('btn-text');
   const btnIcon     = document.getElementById('btn-icon');
@@ -923,8 +827,6 @@
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    // Basic validation
     const required = form.querySelectorAll('[required]');
     let valid = true;
     required.forEach(field => {
@@ -937,7 +839,6 @@
     });
     if (!valid) return;
 
-    // Simulate async submit
     btnText.textContent = 'Sending…';
     btnIcon.classList.add('hidden');
     btnSpinner.classList.remove('hidden');
@@ -953,7 +854,6 @@
     }, 1800);
   });
 
-  // Clear error styling on input
   form.querySelectorAll('[required]').forEach(field => {
     field.addEventListener('input', () => {
       field.classList.remove('border-red-400', 'ring-2', 'ring-red-300');
