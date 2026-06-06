@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heavy Iron Logistics — Specialized Freight &amp; Cross-Border Transport</title>
+  <meta name="description" content="Heavy Iron Logistics specializes in flatbed, lowboy, deck, and RGN trailer transport. Cross-border US importing &amp; exporting. DOT &amp; MC authorized — Mission, TX." />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts: Space Grotesk + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+          },
+          colors: {
+            amber: {
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+              700: '#B45309',
+            },
+            iron: {
+              50:  '#F8FAFC',
+              100: '#F1F5F9',
+              200: '#E2E8F0',
+              300: '#CBD5E1',
+              400: '#94A3B8',
+              500: '#64748B',
+              600: '#475569',
+              700: '#334155',
+              800: '#1E293B',
+              900: '#0F172A',
+              950: '#0A0F1A',
+            },
+          },
+          animation: {
+            'fade-up':    'fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both',
+            'fade-in':    'fadeIn 0.5s ease both',
+            'slide-right':'slideRight 0.7s cubic-bezier(0.16,1,0.3,1) both',
+            'counter':    'counter 2s ease-out both',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4,0,0.6,1) infinite',
+            'spin-slow':  'spin 20s linear infinite',
+          },
+          keyframes: {
+            fadeUp:     { '0%': { opacity:'0', transform:'translateY(32px)' }, '100%': { opacity:'1', transform:'translateY(0)' } },
+            fadeIn:     { '0%': { opacity:'0' }, '100%': { opacity:'1' } },
+            slideRight: { '0%': { opacity:'0', transform:'translateX(-32px)' }, '100%': { opacity:'1', transform:'translateX(0)' } },
+          },
+          backgroundImage: {
+            'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F59E0B' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { font-family: 'Inter', sans-serif; }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0F1A; }
+    ::-webkit-scrollbar-thumb { background: #F59E0B; border-radius: 3px; }
+
+    /* Noise overlay */
+    .noise::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    /* Amber glow */
+    .glow-amber { box-shadow: 0 0 40px rgba(245,158,11,0.25), 0 0 80px rgba(245,158,11,0.1); }
+    .glow-amber-sm { box-shadow: 0 0 20px rgba(245,158,11,0.2); }
+    .text-glow { text-shadow: 0 0 40px rgba(245,158,11,0.4); }
+
+    /* Stripe accent line */
+    .stripe-accent {
+      background: repeating-linear-gradient(
+        -45deg,
+        #F59E0B,
+        #F59E0B 4px,
+        transparent 4px,
+        transparent 18px
+      );
+    }
+
+    /* Card hover lift */
+    .card-lift {
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s ease;
+    }
+    .card-lift:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(245,158,11,0.15);
+    }
+
+    /* Nav active state */
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #F59E0B;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    /* Hero diagonal cut */
+    .hero-clip { clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+
+    /* Section divider */
+    .divider-amber {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #F59E0B, transparent);
+    }
+
+    /* Animate on scroll */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* Counter */
+    .counter-val { font-variant-numeric: tabular-nums; }
+
+    /* Mobile menu */
+    #mobile-menu { transition: max-height 0.35s ease, opacity 0.3s ease; max-height: 0; overflow: hidden; opacity: 0; }
+    #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+    /* Focus ring */
+    :focus-visible { outline: 2px solid #F59E0B; outline-offset: 3px; }
+
+    /* Skip link */
+    .skip-link { position: absolute; top: -40px; left: 1rem; background: #F59E0B; color: #0A0F1A; padding: 0.5rem 1rem; font-weight: 700; border-radius: 4px; z-index: 9999; transition: top 0.2s; }
+    .skip-link:focus { top: 1rem; }
+  </style>
+</head>
+
+<body class="bg-iron-950 text-white font-body antialiased overflow-x-hidden">
+
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ─── NAVBAR ───────────────────────────────────────────── -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center justify-between h-16 lg:h-20" aria-label="Main navigation">
+
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-3 group" aria-label="Heavy Iron Logistics Home">
+          <!-- SVG Logo mark -->
+          <div class="relative w-9 h-9">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="36" height="36" rx="4" fill="#F59E0B"/>
+              <path d="M6 24V16l5-6h14l5 6v8H6z" fill="#0A0F1A" stroke="#0A0F1A" stroke-width="0.5"/>
+              <rect x="8" y="24" width="4" height="3" rx="2" fill="#F59E0B"/>
+              <rect x="24" y="24" width="4" height="3" rx="2" fill="#F59E0B"/>
+              <path d="M6 20h24" stroke="#F59E0B" stroke-width="1.5"/>
+              <path d="M11 16h14l3 4H8l3-4z" fill="#F59E0B"/>
+            </svg>
+          </div>
+          <div class="leading-none">
+            <span class="block font-heading font-800 text-white text-sm tracking-tight uppercase">Heavy Iron</span>
+            <span class="block font-heading font-500 text-amber-500 text-xs tracking-widest uppercase">Logistics</span>
+          </div>
+        </a>
+
+        <!-- Desktop nav -->
+        <ul class="hidden lg:flex items-center gap-8" role="list">
+          <li><a href="#services" class="nav-link text-iron-300 hover:text-white font-medium text-sm transition-colors">Services</a></li>
+          <li><a href="#fleet" class="nav-link text-iron-300 hover:text-white font-medium text-sm transition-colors">Fleet</a></li>
+          <li><a href="#about" class="nav-link text-iron-300 hover:text-white font-medium text-sm transition-colors">About</a></li>
+          <li><a href="#contact" class="nav-link text-iron-300 hover:text-white font-medium text-sm transition-colors">Contact</a></li>
+        </ul>
+
+        <!-- CTA button -->
+        <a href="tel:9565220382"
+           class="hidden lg:flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-iron-950 font-heading font-700 text-sm px-5 py-2.5 rounded transition-all duration-200 cursor-pointer glow-amber-sm"
+           aria-label="Call us at (956) 522-0382">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+          </svg>
+          (956) 522-0382
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button id="menu-toggle" class="lg:hidden p-2 text-iron-300 hover:text-amber-500 transition-colors cursor-pointer"
+                aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+          <svg id="icon-menu" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="lg:hidden bg-iron-900/95 backdrop-blur-md border-t border-iron-800" role="navigation" aria-label="Mobile navigation">
+      <ul class="px-4 py-4 flex flex-col gap-1" role="list">
+        <li><a href="#services" class="block py-2.5 px-3 text-iron-300 hover:text-white hover:bg-iron-800 rounded text-sm font-medium transition-colors">Services</a></li>
+        <li><a href="#fleet"    class="block py-2.5 px-3 text-iron-300 hover:text-white hover:bg-iron-800 rounded text-sm font-medium transition-colors">Fleet</a></li>
+        <li><a href="#about"   class="block py-2.5 px-3 text-iron-300 hover:text-white hover:bg-iron-800 rounded text-sm font-medium transition-colors">About</a></li>
+        <li><a href="#contact" class="block py-2.5 px-3 text-iron-300 hover:text-white hover:bg-iron-800 rounded text-sm font-medium transition-colors">Contact</a></li>
+        <li class="pt-2">
+          <a href="tel:9565220382" class="flex items-center gap-2 bg-amber-500 text-iron-950 font-heading font-700 px-4 py-2.5 rounded text-sm cursor-pointer">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+            </svg>
+            Call (956) 522-0382
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ─── MAIN CONTENT ─────────────────────────────────────── -->
+  <main id="main">
+
+    <!-- ─── HERO ─────────────────────────────────────────────── -->
+    <section id="hero" class="relative min-h-dvh flex flex-col justify-center overflow-hidden noise" aria-label="Hero">
+
+      <!-- Background layers -->
+      <div class="absolute inset-0 bg-iron-950"></div>
+      <div class="absolute inset-0 bg-grid-pattern opacity-100"></div>
+
+      <!-- Amber gradient orb -->
+      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute bottom-1/3 left-1/6 w-64 h-64 bg-amber-600/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Diagonal accent stripe -->
+      <div class="absolute left-0 top-0 bottom-0 w-1 bg-amber-500/60" aria-hidden="true"></div>
+      <div class="absolute top-0 left-0 right-0 h-0.5 stripe-accent opacity-30" aria-hidden="true"></div>
+
+      <!-- Hero content -->
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-32 lg:pb-24">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          <!-- Left column -->
+          <div>
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-heading font-600 uppercase tracking-widest px-4 py-2 rounded-full mb-6 animate-fade-in" style="animation-delay:0.1s">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              DOT &amp; MC Authorized Carrier
+            </div>
+
+            <!-- Headline -->
+            <h1 class="font-heading font-800 text-5xl sm:text-6xl lg:text-7xl leading-none tracking-tight mb-6 animate-fade-up" style="animation-delay:0.2s">
+              <span class="block text-white">HEAVY</span>
+              <span class="block text-amber-500 text-glow">IRON</span>
+              <span class="block text-white">LOGISTICS</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-iron-300 text-lg sm:text-xl leading-relaxed max-w-lg mb-8 animate-fade-up" style="animation-delay:0.35s">
+              Specialized flatbed, lowboy, deck &amp; RGN trailer transport across the US &amp; Mexico border. Licensed freight forwarder and customs brokerage partner — Mission, TX.
+            </p>
+
+            <!-- CTA group -->
+            <div class="flex flex-col sm:flex-row gap-4 animate-fade-up" style="animation-delay:0.5s">
+              <a href="#contact"
+                 class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-iron-950 font-heading font-700 text-base px-7 py-3.5 rounded transition-all duration-200 cursor-pointer glow-amber"
+                 aria-label="Get a freight quote">
+                Get a Quote
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+              <a href="tel:9565220382"
+                 class="inline-flex items-center justify-center gap-2 border border-iron-600 hover:border-amber-500/60 text-iron-200 hover:text-white font-heading font-600 text-base px-7 py-3.5 rounded transition-all duration-200 cursor-pointer"
+                 aria-label="Call dispatch at (956) 522-0382">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+                </svg>
+                Call Dispatch
+              </a>
+            </div>
+
+            <!-- Trust indicators -->
+            <div class="flex flex-wrap gap-6 mt-10 animate-fade-up" style="animation-delay:0.65s" aria-label="Trust certifications">
+              <div class="flex items-center gap-2 text-iron-400 text-sm">
+                <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>DOT Compliant</span>
+              </div>
+              <div class="flex items-center gap-2 text-iron-400 text-sm">
+                <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>MC Authorized</span>
+              </div>
+              <div class="flex items-center gap-2 text-iron-400 text-sm">
+                <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                </svg>
+                <span>Cross-Border Customs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column — Truck SVG illustration -->
+          <div class="hidden lg:flex justify-end items-center animate-fade-in" style="animation-delay:0.4s" aria-hidden="true">
+            <div class="relative w-full max-w-lg">
+              <!-- Glow behind truck -->
+              <div class="absolute inset-0 bg-amber-500/5 rounded-2xl blur-2xl"></div>
+
+              <!-- Industrial SVG truck illustration -->
+              <svg viewBox="0 0 520 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full drop-shadow-2xl" role="img" aria-label="Heavy equipment flatbed truck illustration">
+                <!-- Road -->
+                <rect x="0" y="240" width="520" height="40" fill="#1E293B" rx="2"/>
+                <rect x="0" y="238" width="520" height="4" fill="#334155"/>
+                <!-- Road markings -->
+                <rect x="40" y="248" width="60" height="4" fill="#475569" rx="2"/>
+                <rect x="160" y="248" width="60" height="4" fill="#475569" rx="2"/>
+                <rect x="280" y="248" width="60" height="4" fill="#475569" rx="2"/>
+                <rect x="400" y="248" width="60" height="4" fill="#475569" rx="2"/>
+
+                <!-- Trailer bed -->
+                <rect x="30" y="180" width="330" height="12" fill="#334155" rx="2"/>
+                <!-- Trailer frame rails -->
+                <rect x="30" y="190" width="330" height="4" fill="#475569"/>
+                <!-- Deck planks detail -->
+                <rect x="35" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="60" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="85" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="110" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="135" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="160" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="185" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="210" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="235" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="260" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="285" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="310" y="178" width="4" height="14" fill="#1E293B"/>
+                <rect x="335" y="178" width="4" height="14" fill="#1E293B"/>
+
+                <!-- Heavy machinery on flatbed (excavator silhouette) -->
+                <!-- Base/track -->
+                <rect x="80" y="148" width="120" height="32" fill="#475569" rx="3"/>
+                <rect x="80" y="154" width="120" height="20" fill="#334155" rx="2"/>
+                <!-- Track wheels -->
+                <circle cx="96" cy="172" r="8" fill="#1E293B" stroke="#64748B" stroke-width="2"/>
+                <circle cx="96" cy="172" r="4" fill="#F59E0B"/>
+                <circle cx="120" cy="172" r="6" fill="#1E293B" stroke="#64748B" stroke-width="2"/>
+                <circle cx="144" cy="172" r="6" fill="#1E293B" stroke="#64748B" stroke-width="2"/>
+                <circle cx="168" cy="172" r="6" fill="#1E293B" stroke="#64748B" stroke-width="2"/>
+                <circle cx="188" cy="172" r="8" fill="#1E293B" stroke="#64748B" stroke-width="2"/>
+                <circle cx="188" cy="172" r="4" fill="#F59E0B"/>
+                <!-- Cab body -->
+                <rect x="100" y="118" width="55" height="34" fill="#F59E0B" rx="4"/>
+                <rect x="105" y="122" width="20" height="16" fill="#0A0F1A" rx="2" opacity="0.7"/>
+                <!-- Boom arm -->
+                <rect x="148" y="86" width="8" height="70" fill="#64748B" rx="3" transform="rotate(-20 148 86)"/>
+                <rect x="158" y="60" width="6" height="70" fill="#94A3B8" rx="2" transform="rotate(30 158 60)"/>
+                <!-- Bucket -->
+                <path d="M178 108 L195 108 L200 128 L170 128 Z" fill="#475569" stroke="#64748B" stroke-width="1.5"/>
+
+                <!-- Cab/Truck -->
+                <!-- Cab body -->
+                <rect x="360" y="140" width="130" height="98" fill="#1E293B" rx="4"/>
+                <rect x="360" y="140" width="130" height="98" fill="none" stroke="#334155" stroke-width="2" rx="4"/>
+                <!-- Cab upper (sleeper) -->
+                <rect x="380" y="106" width="110" height="52" fill="#1E293B" rx="6"/>
+                <rect x="380" y="106" width="110" height="52" fill="none" stroke="#334155" stroke-width="1.5" rx="6"/>
+                <!-- Windshield -->
+                <rect x="388" y="112" width="90" height="38" fill="#0F172A" rx="4"/>
+                <rect x="388" y="112" width="90" height="38" fill="none" stroke="#475569" stroke-width="1" rx="4"/>
+                <!-- Windshield glare -->
+                <path d="M395 118 L440 115 L445 140 L395 140 Z" fill="#334155" opacity="0.4"/>
+                <!-- Door window -->
+                <rect x="370" y="152" width="55" height="36" fill="#0F172A" rx="3" opacity="0.8"/>
+                <rect x="370" y="152" width="55" height="36" fill="none" stroke="#334155" stroke-width="1" rx="3"/>
+                <!-- Door handle -->
+                <rect x="415" y="172" width="14" height="3" fill="#64748B" rx="1.5"/>
+                <!-- Fuel tank -->
+                <rect x="366" y="196" width="22" height="30" fill="#334155" rx="3"/>
+                <rect x="366" y="196" width="22" height="30" fill="none" stroke="#475569" stroke-width="1" rx="3"/>
+                <!-- Exhaust stack -->
+                <rect x="474" y="80" width="8" height="65" fill="#475569" rx="4"/>
+                <ellipse cx="478" cy="78" rx="5" ry="3" fill="#64748B"/>
+                <!-- Amber stripe on cab -->
+                <rect x="360" y="180" width="130" height="5" fill="#F59E0B"/>
+                <!-- Headlight bar -->
+                <rect x="482" y="145" width="6" height="20" fill="#FCD34D" rx="2"/>
+                <rect x="482" y="145" width="6" height="20" fill="none" stroke="#F59E0B" stroke-width="1" rx="2"/>
+                <!-- Logo mark on door -->
+                <rect x="422" y="157" width="18" height="18" rx="3" fill="#F59E0B"/>
+                <path d="M424 168v-4l2-2h8l2 2v4h-12z" fill="#0A0F1A"/>
+                <circle cx="427" cy="170" r="1.5" fill="#F59E0B"/>
+                <circle cx="433" cy="170" r="1.5" fill="#F59E0B"/>
+
+                <!-- 5th wheel / kingpin connection -->
+                <rect x="344" y="192" width="20" height="8" fill="#475569" rx="2"/>
+
+                <!-- Front axle steer -->
+                <rect x="436" y="232" width="56" height="10" fill="#1E293B" rx="2"/>
+                <!-- Drive axles -->
+                <rect x="340" y="228" width="30" height="10" fill="#1E293B" rx="2"/>
+                <rect x="340" y="218" width="30" height="10" fill="#1E293B" rx="2"/>
+
+                <!-- Wheels -->
+                <!-- Steer axle -->
+                <circle cx="450" cy="238" r="18" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                <circle cx="450" cy="238" r="12" fill="#0A0F1A" stroke="#475569" stroke-width="1.5"/>
+                <circle cx="450" cy="238" r="4" fill="#F59E0B"/>
+                <circle cx="484" cy="238" r="18" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                <circle cx="484" cy="238" r="12" fill="#0A0F1A" stroke="#475569" stroke-width="1.5"/>
+                <circle cx="484" cy="238" r="4" fill="#F59E0B"/>
+                <!-- Drive axles -->
+                <circle cx="352" cy="230" r="16" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                <circle cx="352" cy="230" r="10" fill="#0A0F1A" stroke="#475569" stroke-width="1.5"/>
+                <circle cx="352" cy="230" r="3.5" fill="#F59E0B"/>
+                <!-- Trailer axles -->
+                <circle cx="60" cy="228" r="16" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                <circle cx="60" cy="228" r="10" fill="#0A0F1A" stroke="#475569" stroke-width="1.5"/>
+                <circle cx="60" cy="228" r="3.5" fill="#F59E0B"/>
+                <circle cx="100" cy="228" r="16" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                <circle cx="100" cy="228" r="10" fill="#0A0F1A" stroke="#475569" stroke-width="1.5"/>
+                <circle cx="100" cy="228" r="3.5" fill="#F59E0B"/>
+                <circle cx="140" cy="228" r="16" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                <circle cx="140" cy="228" r="10" fill="#0A0F1A" stroke="#475569" stroke-width="1.5"/>
+                <circle cx="140" cy="228" r="3.5" fill="#F59E0B"/>
+
+                <!-- Amber running lights on trailer -->
+                <circle cx="36" cy="183" r="3" fill="#F59E0B"/>
+                <circle cx="50" cy="183" r="3" fill="#F59E0B"/>
+                <circle cx="350" cy="183" r="3" fill="#F59E0B"/>
+                <circle cx="336" cy="183" r="3" fill="#F59E0B"/>
+
+                <!-- Tie-down straps suggestion -->
+                <path d="M80 180 L80 156 Q88 150 96 148" stroke="#94A3B8" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+                <path d="M220 180 L220 166 Q228 158 236 152" stroke="#94A3B8" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-fade-in" style="animation-delay:1s" aria-hidden="true">
+          <span class="text-iron-500 text-xs tracking-widest uppercase">Scroll</span>
+          <div class="w-px h-8 bg-gradient-to-b from-iron-500 to-transparent animate-pulse"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STATS ─────────────────────────────────────────────── -->
+    <section aria-label="Company statistics" class="relative py-12 bg-iron-900 border-y border-iron-800">
+      <div class="absolute top-0 left-0 right-0 h-px stripe-accent opacity-20" aria-hidden="true"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <dl class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Stat 1 -->
+          <div class="text-center reveal">
+            <dt class="sr-only">Fleet types</dt>
+            <dd>
+              <span class="block font-heading font-800 text-4xl lg:text-5xl text-amber-500 counter-val" data-target="4" data-suffix="+">4+</span>
+              <span class="block text-iron-400 text-sm mt-1 font-medium">Trailer Types</span>
+            </dd>
+          </div>
+          <!-- Stat 2 -->
+          <div class="text-center reveal" style="transition-delay:0.1s">
+            <dt class="sr-only">Cross-border capability</dt>
+            <dd>
+              <span class="block font-heading font-800 text-4xl lg:text-5xl text-amber-500 counter-val" data-target="2" data-suffix=" Countries">2</span>
+              <span class="block text-iron-400 text-sm mt-1 font-medium">Countries Served</span>
+            </dd>
+          </div>
+          <!-- Stat 3 -->
+          <div class="text-center reveal" style="transition-delay:0.2s">
+            <dt class="sr-only">Available dispatch</dt>
+            <dd>
+              <span class="block font-heading font-800 text-4xl lg:text-5xl text-amber-500">24/7</span>
+              <span class="block text-iron-400 text-sm mt-1 font-medium">Dispatch Available</span>
+            </dd>
+          </div>
+          <!-- Stat 4 -->
+          <div class="text-center reveal" style="transition-delay:0.3s">
+            <dt class="sr-only">Regulatory compliance</dt>
+            <dd>
+              <span class="block font-heading font-800 text-4xl lg:text-5xl text-amber-500">100%</span>
+              <span class="block text-iron-400 text-sm mt-1 font-medium">DOT / MC Compliant</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ─── SERVICES ──────────────────────────────────────────── -->
+    <section id="services" class="py-20 lg:py-28 relative" aria-labelledby="services-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section header -->
+        <div class="max-w-2xl mb-16 reveal">
+          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">What We Haul</p>
+          <h2 id="services-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white leading-tight">
+            Specialized Freight<br/>
+            <span class="text-iron-400">Services</span>
+          </h2>
+          <div class="w-16 h-1 bg-amber-500 mt-5 rounded-full"></div>
+        </div>
+
+        <!-- Service cards -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Card 1: Cross-Border -->
+          <article class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 reveal" style="transition-delay:0s" aria-labelledby="svc-crossborder">
+            <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center mb-5 border border-amber-500/20">
+              <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 id="svc-crossborder" class="font-heading font-700 text-white text-xl mb-3">Cross-Border Transport</h3>
+            <p class="text-iron-400 text-sm leading-relaxed">
+              Full-service US–Mexico import and export logistics for heavy machinery. We coordinate every step of cross-border freight movement.
+            </p>
+            <div class="mt-5 pt-5 border-t border-iron-800">
+              <ul class="space-y-2" role="list">
+                <li class="flex items-center gap-2 text-iron-300 text-sm">
+                  <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  US Importing &amp; Exporting
+                </li>
+                <li class="flex items-center gap-2 text-iron-300 text-sm">
+                  <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  Customs Brokerage Partner
+                </li>
+                <li class="flex items-center gap-2 text-iron-300 text-sm">
+                  <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  Mission, TX Border Gateway
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 2: Freight Forwarding -->
+          <article class="card-lift bg-iron-900 border border-amber-500/30 rounded-xl p-7 reveal glow-amber-sm" style="transition-delay:0.1s" aria-labelledby="svc-freight">
+            <div class="absolute top-4 right-4">
+              <span class="bg-amber-500 text-iron-950 text-xs font-heading font-700 uppercase tracking-wider px-2.5 py-1 rounded">Popular</span>
+            </div>
+            <div class="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center mb-5 border border-amber-500/40">
+              <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 id="svc-freight" class="font-heading font-700 text-white text-xl mb-3">Freight Forwarding</h3>
+            <p class="text-iron-400 text-sm leading-relaxed">
+              We act as your intermediary freight forwarder — coordinating carriers, documentation, permits, and delivery so you can focus on your business.
+            </p>
+            <div class="mt-5 pt-5 border-t border-iron-800">
+              <ul class="space-y-2" role="list">
+                <li class="flex items-center gap-2 text-iron-300 text-sm">
+                  <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  Oversize &amp; Overweight Permits
+                </li>
+                <li class="flex items-center gap-2 text-iron-300 text-sm">
+                  <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  Route Surveys &amp; Planning
+                </li>
+                <li class="flex items-center gap-2 text-iron-300 text-sm">
+                  <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  End-to-End Coordination
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 3: Heavy Haul -->
+          <article class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 reveal" style="transition-delay:0.2s" aria-labelledby="svc-haul">
+            <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center mb-5 border border-amber-500/20">
+              <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+              </svg>
+            </div>
+            <h3 id="svc-haul" class="font-heading font-700 text-white text-xl mb-3">Heavy Haul Specialized</h3>
+            <p class="text-iron-400 text-sm leading-relaxed">
+              Transporting construction equipment, industrial machinery, and oversized loads that require specialized expertise and equipment.
+            </p>
+            <div class="mt-5 pt-5 border-t border-iron-800">
+              <ul class="space-y-2" role="list">
+                <li class="flex items-center gap-2 text-iron-300 text-sm">
+                  <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  Construction Equipment
+                </li>
+                <li class="flex items-center gap-2 text-iron-300 text-sm">
+                  <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  Industrial Machinery
+                </li>
+                <li class="flex items-center gap-2 text-iron-300 text-sm">
+                  <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  Agricultural Equipment
+                </li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="divider-amber opacity-30 mx-8 lg:mx-20" role="separator" aria-hidden="true"></div>
+
+    <!-- ─── FLEET ──────────────────────────────────────────────── -->
+    <section id="fleet" class="py-20 lg:py-28 relative" aria-labelledby="fleet-heading">
+      <!-- Background accent -->
+      <div class="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section header -->
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">Our Equipment</p>
+          <h2 id="fleet-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white">
+            Specialized Fleet<br/>
+            <span class="text-iron-400">Capabilities</span>
+          </h2>
+          <div class="w-16 h-1 bg-amber-500 mt-5 mx-auto rounded-full"></div>
+          <p class="text-iron-400 mt-5 leading-relaxed">
+            The right trailer for every load. From standard flatbeds to multi-axle RGN configurations for the heaviest machinery.
+          </p>
+        </div>
+
+        <!-- Fleet grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+          <!-- Flatbed -->
+          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:0s" role="article" aria-label="Flatbed trailers">
+            <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
+            <div class="p-6">
+              <!-- Flatbed SVG icon -->
+              <div class="mb-5">
+                <svg viewBox="0 0 80 40" class="w-20 h-10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="5" y="14" width="65" height="7" fill="#475569" rx="1"/>
+                  <rect x="5" y="19" width="65" height="3" fill="#F59E0B" opacity="0.6"/>
+                  <circle cx="16" cy="28" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="16" cy="28" r="3.5" fill="#F59E0B"/>
+                  <circle cx="36" cy="28" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="36" cy="28" r="3.5" fill="#F59E0B"/>
+                  <circle cx="60" cy="28" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="60" cy="28" r="3.5" fill="#F59E0B"/>
+                </svg>
+              </div>
+              <h3 class="font-heading font-700 text-white text-lg mb-2">Flatbed</h3>
+              <p class="text-iron-400 text-sm leading-relaxed">Standard flatbed trailers for building materials, steel coils, and general heavy freight.</p>
+              <div class="mt-4 text-amber-500 text-xs font-heading font-600 uppercase tracking-wider">Standard Load</div>
+            </div>
+          </div>
+
+          <!-- Deck -->
+          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:0.1s" role="article" aria-label="Deck trailers">
+            <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
+            <div class="p-6">
+              <!-- Step deck SVG icon -->
+              <div class="mb-5">
+                <svg viewBox="0 0 80 40" class="w-20 h-10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="5" y="10" width="35" height="6" fill="#475569" rx="1"/>
+                  <rect x="38" y="16" width="32" height="6" fill="#475569" rx="1"/>
+                  <rect x="38" y="14" width="4" height="10" fill="#334155"/>
+                  <rect x="5" y="14" width="65" height="2" fill="#F59E0B" opacity="0.5"/>
+                  <circle cx="16" cy="28" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="16" cy="28" r="3.5" fill="#F59E0B"/>
+                  <circle cx="58" cy="28" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="58" cy="28" r="3.5" fill="#F59E0B"/>
+                </svg>
+              </div>
+              <h3 class="font-heading font-700 text-white text-lg mb-2">Step Deck</h3>
+              <p class="text-iron-400 text-sm leading-relaxed">Step-deck configuration for taller loads that exceed standard flatbed height limits.</p>
+              <div class="mt-4 text-amber-500 text-xs font-heading font-600 uppercase tracking-wider">Height-Critical</div>
+            </div>
+          </div>
+
+          <!-- Lowboy -->
+          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:0.2s" role="article" aria-label="Lowboy trailers">
+            <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
+            <div class="p-6">
+              <!-- Lowboy SVG icon -->
+              <div class="mb-5">
+                <svg viewBox="0 0 80 40" class="w-20 h-10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="5" y="18" width="15" height="5" fill="#475569" rx="1"/>
+                  <rect x="20" y="20" width="40" height="3" fill="#F59E0B" opacity="0.8"/>
+                  <rect x="60" y="18" width="15" height="5" fill="#475569" rx="1"/>
+                  <rect x="5" y="17" width="70" height="2" fill="#475569"/>
+                  <circle cx="14" cy="29" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="14" cy="29" r="3.5" fill="#F59E0B"/>
+                  <circle cx="42" cy="27" r="5" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="42" cy="27" r="2.5" fill="#F59E0B"/>
+                  <circle cx="66" cy="29" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="66" cy="29" r="3.5" fill="#F59E0B"/>
+                </svg>
+              </div>
+              <h3 class="font-heading font-700 text-white text-lg mb-2">Lowboy</h3>
+              <p class="text-iron-400 text-sm leading-relaxed">Low-profile trailers for excavators, bulldozers, and heavy construction equipment transport.</p>
+              <div class="mt-4 text-amber-500 text-xs font-heading font-600 uppercase tracking-wider">Heavy Machinery</div>
+            </div>
+          </div>
+
+          <!-- RGN -->
+          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:0.3s" role="article" aria-label="Removable Gooseneck trailers">
+            <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
+            <div class="p-6">
+              <!-- RGN SVG icon -->
+              <div class="mb-5">
+                <svg viewBox="0 0 80 40" class="w-20 h-10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M5 14 L20 8 L22 18 L5 18 Z" fill="#475569"/>
+                  <rect x="22" y="16" width="50" height="4" fill="#475569" rx="1"/>
+                  <rect x="22" y="16" width="50" height="2" fill="#F59E0B" opacity="0.7"/>
+                  <circle cx="12" cy="27" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="12" cy="27" r="3.5" fill="#F59E0B"/>
+                  <circle cx="52" cy="27" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="52" cy="27" r="3.5" fill="#F59E0B"/>
+                  <circle cx="68" cy="27" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="68" cy="27" r="3.5" fill="#F59E0B"/>
+                </svg>
+              </div>
+              <h3 class="font-heading font-700 text-white text-lg mb-2">RGN</h3>
+              <p class="text-iron-400 text-sm leading-relaxed">Removable gooseneck trailers for the heaviest, tallest loads with drive-on loading capability.</p>
+              <div class="mt-4 text-amber-500 text-xs font-heading font-600 uppercase tracking-wider">Superload Capable</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ABOUT ──────────────────────────────────────────────── -->
+    <section id="about" class="py-20 lg:py-28 bg-iron-900 relative" aria-labelledby="about-heading">
+      <div class="absolute top-0 left-0 right-0 h-px divider-amber opacity-20" aria-hidden="true"></div>
+      <div class="absolute left-0 w-1 top-16 bottom-16 bg-amber-500/20" aria-hidden="true"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          <!-- Left: content -->
+          <div class="reveal-left">
+            <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">About Us</p>
+            <h2 id="about-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white leading-tight mb-6">
+              Your Partner for<br/>
+              <span class="text-amber-500">Demanding Hauls</span>
+            </h2>
+            <p class="text-iron-300 leading-relaxed mb-5">
+              Heavy Iron Logistics is a Mission, Texas-based specialized freight carrier operating at the US–Mexico border. We combine deep local knowledge of cross-border logistics with the expertise needed to move the heaviest and most complex loads.
+            </p>
+            <p class="text-iron-400 leading-relaxed mb-8">
+              Licensed under DOT and MC authority, we operate as both a direct carrier and freight forwarder. Our customs brokerage partnerships ensure seamless import and export documentation for every shipment — no matter how heavy, wide, or tall.
+            </p>
+
+            <!-- Compliance badges -->
+            <div class="flex flex-wrap gap-3 mb-8">
+              <div class="flex items-center gap-2 bg-iron-800 border border-iron-700 rounded-lg px-4 py-2.5">
+                <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-iron-200 text-sm font-medium">DOT Authorized</span>
+              </div>
+              <div class="flex items-center gap-2 bg-iron-800 border border-iron-700 rounded-lg px-4 py-2.5">
+                <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-iron-200 text-sm font-medium">MC Authority</span>
+              </div>
+              <div class="flex items-center gap-2 bg-iron-800 border border-iron-700 rounded-lg px-4 py-2.5">
+                <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+                </svg>
+                <span class="text-iron-200 text-sm font-medium">Customs Partner</span>
+              </div>
+            </div>
+
+            <!-- Contact quick links -->
+            <div class="space-y-3">
+              <a href="tel:9565220382" class="flex items-center gap-3 text-iron-300 hover:text-white transition-colors group cursor-pointer" aria-label="Main phone (956) 522-0382">
+                <div class="w-10 h-10 bg-iron-800 group-hover:bg-amber-500/20 border border-iron-700 group-hover:border-amber-500/40 rounded-lg flex items-center justify-center transition-all duration-200 flex-shrink-0">
+                  <svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm font-medium text-white">(956) 522-0382</div>
+                  <div class="text-xs text-iron-500">Main Office</div>
+                </div>
+              </a>
+              <a href="tel:9563404848" class="flex items-center gap-3 text-iron-300 hover:text-white transition-colors group cursor-pointer" aria-label="Dispatch phone 956-340-4848">
+                <div class="w-10 h-10 bg-iron-800 group-hover:bg-amber-500/20 border border-iron-700 group-hover:border-amber-500/40 rounded-lg flex items-center justify-center transition-all duration-200 flex-shrink-0">
+                  <svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6m-6 0a3 3 0 00-3 3v12a3 3 0 003 3h6a3 3 0 003-3V6a3 3 0 00-3-3m-6 0h6"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm font-medium text-white">956-340-4848</div>
+                  <div class="text-xs text-iron-500">Dispatch Line</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: feature list with amber accent numbers -->
+          <div class="space-y-5 reveal">
+            <div class="bg-iron-950 border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
+              <span class="font-heading font-800 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">01</span>
+              <div>
+                <h3 class="font-heading font-700 text-white text-lg mb-1">Border Expertise</h3>
+                <p class="text-iron-400 text-sm leading-relaxed">Based in Mission, TX — steps from the US–Mexico border crossing. We know the documentation, regulations, and timing required for smooth cross-border moves.</p>
+              </div>
+            </div>
+
+            <div class="bg-iron-950 border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
+              <span class="font-heading font-800 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">02</span>
+              <div>
+                <h3 class="font-heading font-700 text-white text-lg mb-1">Specialized Equipment</h3>
+                <p class="text-iron-400 text-sm leading-relaxed">Full fleet of flatbed, step deck, lowboy, and RGN trailers configured for heavy machinery, industrial equipment, and oversize loads.</p>
+              </div>
+            </div>
+
+            <div class="bg-iron-950 border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
+              <span class="font-heading font-800 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">03</span>
+              <div>
+                <h3 class="font-heading font-700 text-white text-lg mb-1">Carrier &amp; Forwarder</h3>
+                <p class="text-iron-400 text-sm leading-relaxed">Unique dual role — we haul directly as an authorized carrier and arrange logistics as a freight forwarder, providing full flexibility for your supply chain.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT ────────────────────────────────────────────── -->
+    <section id="contact" class="py-20 lg:py-28 relative" aria-labelledby="contact-heading">
+      <!-- Ambient glow -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section header -->
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">Reach Us</p>
+          <h2 id="contact-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white">
+            Get In Touch
+          </h2>
+          <div class="w-16 h-1 bg-amber-500 mt-5 mx-auto rounded-full"></div>
+          <p class="text-iron-400 mt-5 leading-relaxed">
+            Ready to move heavy iron? Our dispatch team is standing by.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+          <!-- Phone -->
+          <div class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 text-center reveal">
+            <div class="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+              </svg>
+            </div>
+            <h3 class="font-heading font-700 text-white text-lg mb-3">Phone</h3>
+            <a href="tel:9565220382" class="block text-amber-400 hover:text-amber-300 font-medium transition-colors cursor-pointer mb-1" aria-label="Call main office at (956) 522-0382">
+              (956) 522-0382
+            </a>
+            <span class="text-iron-500 text-xs">Main Office</span>
+            <a href="tel:9563404848" class="block text-amber-400 hover:text-amber-300 font-medium transition-colors cursor-pointer mt-3 mb-1" aria-label="Call dispatch at 956-340-4848">
+              956-340-4848
+            </a>
+            <span class="text-iron-500 text-xs">Dispatch / Alternate</span>
+          </div>
+
+          <!-- Email -->
+          <div class="card-lift bg-iron-900 border border-amber-500/30 rounded-xl p-7 text-center reveal glow-amber-sm" style="transition-delay:0.1s">
+            <div class="w-14 h-14 bg-amber-500/20 border border-amber-500/40 rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 class="font-heading font-700 text-white text-lg mb-3">Email</h3>
+            <a href="mailto:edgart@heavyironlog.com" class="block text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors cursor-pointer mb-1" aria-label="Email Edgar at edgart@heavyironlog.com">
+              edgart@heavyironlog.com
+            </a>
+            <span class="text-iron-500 text-xs">Edgar (Main Contact)</span>
+            <a href="mailto:dispatch@heavyironlog.com" class="block text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors cursor-pointer mt-3 mb-1" aria-label="Email dispatch at dispatch@heavyironlog.com">
+              dispatch@heavyironlog.com
+            </a>
+            <span class="text-iron-500 text-xs">Dispatch Team</span>
+          </div>
+
+          <!-- Address -->
+          <div class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 text-center reveal" style="transition-delay:0.2s">
+            <div class="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-heading font-700 text-white text-lg mb-3">Location</h3>
+            <address class="not-italic text-iron-300 text-sm leading-relaxed">
+              2005 E. Griffin Parkway<br/>
+              Suite A<br/>
+              <strong class="text-white">Mission, TX 78572</strong>
+            </address>
+            <a href="https://maps.google.com/?q=2005+E+Griffin+Parkway+Suite+A+Mission+TX+78572"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 mt-4 text-amber-500 hover:text-amber-400 text-xs font-medium transition-colors cursor-pointer"
+               aria-label="Open location in Google Maps">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+              View on Map
+            </a>
+          </div>
+
+        </div>
+
+        <!-- CTA Banner -->
+        <div class="mt-12 bg-iron-900 border border-amber-500/20 rounded-2xl p-8 lg:p-12 text-center relative overflow-hidden reveal">
+          <div class="absolute inset-0 bg-grid-pattern opacity-50" aria-hidden="true"></div>
+          <div class="absolute top-0 left-0 right-0 h-1 bg-amber-500" aria-hidden="true"></div>
+          <div class="relative">
+            <h3 class="font-heading font-800 text-3xl lg:text-4xl text-white mb-3">
+              Ready to Move Heavy Iron?
+            </h3>
+            <p class="text-iron-400 max-w-xl mx-auto mb-8 leading-relaxed">
+              Whether it's a single machine or a full fleet relocation across the US–Mexico border, our team is ready to plan your move.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="mailto:dispatch@heavyironlog.com"
+                 class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-iron-950 font-heading font-700 text-base px-8 py-3.5 rounded transition-all duration-200 cursor-pointer glow-amber"
+                 aria-label="Email dispatch for a quote">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                Email for a Quote
+              </a>
+              <a href="tel:9563404848"
+                 class="inline-flex items-center justify-center gap-2 border border-iron-600 hover:border-amber-500/60 text-iron-200 hover:text-white font-heading font-600 text-base px-8 py-3.5 rounded transition-all duration-200 cursor-pointer"
+                 aria-label="Call dispatch at 956-340-4848">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+                </svg>
+                Call Dispatch Now
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer class="bg-iron-950 border-t border-iron-800 py-12" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+
+        <!-- Brand -->
+        <div class="lg:col-span-2">
+          <a href="#hero" class="flex items-center gap-3 mb-4" aria-label="Heavy Iron Logistics Home">
+            <div class="w-8 h-8">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="36" height="36" rx="4" fill="#F59E0B"/>
+                <path d="M6 24V16l5-6h14l5 6v8H6z" fill="#0A0F1A"/>
+                <rect x="8" y="24" width="4" height="3" rx="2" fill="#F59E0B"/>
+                <rect x="24" y="24" width="4" height="3" rx="2" fill="#F59E0B"/>
+                <path d="M6 20h24" stroke="#F59E0B" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div>
+              <span class="block font-heading font-700 text-white text-sm uppercase tracking-tight">Heavy Iron Logistics</span>
+              <span class="block text-iron-500 text-xs">Mission, TX</span>
+            </div>
+          </a>
+          <p class="text-iron-500 text-sm leading-relaxed max-w-xs">
+            Specialized flatbed, lowboy, deck &amp; RGN freight carrier. Cross-border US–Mexico logistics, freight forwarding, and customs brokerage partner.
+          </p>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="font-heading font-600 text-white text-sm uppercase tracking-wider mb-4">Services</h4>
+          <ul class="space-y-2.5" role="list">
+            <li><a href="#fleet" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Flatbed Transport</a></li>
+            <li><a href="#fleet" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Lowboy &amp; RGN</a></li>
+            <li><a href="#services" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Cross-Border Freight</a></li>
+            <li><a href="#services" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Freight Forwarding</a></li>
+            <li><a href="#services" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Customs Brokerage</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="font-heading font-600 text-white text-sm uppercase tracking-wider mb-4">Contact</h4>
+          <ul class="space-y-3" role="list">
+            <li>
+              <a href="tel:9565220382" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                (956) 522-0382
+              </a>
+            </li>
+            <li>
+              <a href="tel:9563404848" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                956-340-4848
+              </a>
+            </li>
+            <li>
+              <a href="mailto:edgart@heavyironlog.com" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer flex items-center gap-2 break-all">
+                <svg class="w-3.5 h-3.5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                edgart@heavyironlog.com
+              </a>
+            </li>
+            <li>
+              <a href="mailto:dispatch@heavyironlog.com" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer flex items-center gap-2 break-all">
+                <svg class="w-3.5 h-3.5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                dispatch@heavyironlog.com
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="pt-8 border-t border-iron-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-iron-600 text-xs">
+          &copy; <span id="year"></span> Heavy Iron Logistics. All rights reserved.
+        </p>
+        <p class="text-iron-600 text-xs flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+          2005 E. Griffin Pkwy, Suite A, Mission, TX 78572
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── SCRIPTS ────────────────────────────────────────────── -->
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Sticky navbar background ──
+    const navbar = document.getElementById('navbar');
+    function updateNav() {
+      if (window.scrollY > 20) {
+        navbar.classList.add('bg-iron-950/95', 'backdrop-blur-md', 'border-b', 'border-iron-800/60', 'shadow-2xl');
+        navbar.classList.remove('bg-transparent');
+      } else {
+        navbar.classList.remove('bg-iron-950/95', 'backdrop-blur-md', 'border-b', 'border-iron-800/60', 'shadow-2xl');
+        navbar.classList.add('bg-transparent');
+      }
+    }
+    updateNav();
+    window.addEventListener('scroll', updateNav, { passive: true });
+
+    // ── Mobile menu toggle ──
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconMenu   = document.getElementById('icon-menu');
+    const iconClose  = document.getElementById('icon-close');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      iconMenu.classList.toggle('hidden', isOpen);
+      iconClose.classList.toggle('hidden', !isOpen);
+    });
+
+    // Close mobile menu on nav link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        iconMenu.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+
+    // ── Scroll reveal (IntersectionObserver) ──
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Counter animation ──
+    const counters = document.querySelectorAll('[data-target]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el     = entry.target;
+          const target = parseInt(el.dataset.target, 10);
+          const suffix = el.dataset.suffix || '';
+          const duration = 1800;
+          const start = performance.now();
+
+          function step(now) {
+            const elapsed  = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased    = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(eased * target) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(el => counterObserver.observe(el));
+
+    // ── Active nav link on scroll ──
+    const sections    = document.querySelectorAll('section[id]');
+    const navLinks    = document.querySelectorAll('.nav-link');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // ── Reduced motion: skip animations ──
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
+        el.classList.add('visible');
+      });
+    }
+  </script>
+
+</body>
+</html>
