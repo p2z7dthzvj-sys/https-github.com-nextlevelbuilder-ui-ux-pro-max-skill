@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EOS — Web3 at the Speed of Experience</title>
+  <meta name="description" content="Powering seamless experiences and real-time connections. EOS is the base for creators who move with purpose." />
+
+  <!-- General Sans from Fontshare -->
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Honour reduced-motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ── Hero Section ──────────────────────────────────────── */
+    .hero {
+      font-family: 'General Sans', system-ui, -apple-system, sans-serif;
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* Fullscreen background video */
+    .hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 50% black overlay */
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.50);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Content sits above video + overlay */
+    .hero__layer {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Navbar ────────────────────────────────────────────── */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 120px;
+      flex-shrink: 0;
+    }
+
+    .navbar__left {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Logo wordmark: 187 × 25 px */
+    .logo {
+      display: flex;
+      align-items: center;
+      width: 187px;
+      height: 25px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo__wordmark {
+      font-family: 'General Sans', sans-serif;
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* Nav links — desktop only (hidden below 768 px) */
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-left: 44px;
+      list-style: none;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px; /* 14 px between label and chevron */
+      color: #ffffff;
+      font-family: 'General Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover { opacity: 0.65; }
+
+    .nav-link:focus-visible {
+      outline: 2px solid rgba(255,255,255,0.5);
+      outline-offset: 4px;
+      border-radius: 3px;
+    }
+
+    .nav-chevron {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── Pill Button (shared base) ─────────────────────────── */
+    /*
+     * Layered construction:
+     *   1. Outer pill — 0.6 px solid white border, 1 px padding gap
+     *   2. Inner pill — solid bg (black or white), overflow:hidden
+     *   3. Glow streak — radial gradient blob blurred at top edge
+     *   4. Label text  — above the glow via z-index
+     */
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 9999px;
+      border: 0.6px solid rgba(255, 255, 255, 1.0);
+      padding: 1px; /* gap between outer border and inner pill */
+      background: transparent;
+      cursor: pointer;
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: opacity 0.18s ease;
+    }
+
+    .pill-btn:hover  { opacity: 0.80; }
+
+    .pill-btn:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.55);
+      outline-offset: 4px;
+    }
+
+    .pill-btn__inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      padding: 11px 29px;
+      overflow: hidden;
+    }
+
+    /* Dark variant — navbar */
+    .pill-btn__inner--dark  { background: #000000; }
+
+    /* Light variant — hero CTA */
+    .pill-btn__inner--light { background: #ffffff; }
+
+    /* White glow / light-streak along the top edge */
+    .pill-btn__glow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72%;
+      height: 70%;
+      background: radial-gradient(
+        ellipse at 50% -5%,
+        rgba(255, 255, 255, 0.55)  0%,
+        rgba(255, 255, 255, 0.14) 38%,
+        transparent               68%
+      );
+      filter: blur(3.5px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pill-btn__label {
+      position: relative;
+      z-index: 1;
+      font-family: 'General Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .pill-btn__label--white { color: #ffffff; }
+    .pill-btn__label--black { color: #000000; }
+
+    /* ── Hero Body ─────────────────────────────────────────── */
+    .hero__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 280px;
+      padding-bottom: 102px;
+      padding-left: 24px;
+      padding-right: 24px;
+      gap: 40px; /* uniform 40 px between badge, text-group, and CTA */
+    }
+
+    /* ── Badge ─────────────────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      padding: 8px 14px;
+      flex-shrink: 0;
+    }
+
+    /* 4 px white dot */
+    .badge__dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .badge__text {
+      font-family: 'General Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .badge__text--muted { color: rgba(255, 255, 255, 0.60); }
+    .badge__text--solid { color: #ffffff; }
+
+    /* ── Heading + Subtitle group (24 px internal gap) ─────── */
+    .hero__textgroup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .hero__heading {
+      max-width: 613px;
+      font-family: 'General Sans', sans-serif;
+      font-size: 56px;
+      font-weight: 500;
+      line-height: 1.28;
+      letter-spacing: -0.01em;
+      text-align: center;
+      /*
+       * Gradient fill: 144.5 deg
+       * — solid white at 28 %
+       * — fully transparent at 115 %  (beyond element bounds → fades lower portion)
+       */
+      background: linear-gradient(
+        144.5deg,
+        #ffffff       28%,
+        rgba(0,0,0,0) 115%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      /* Prevent descender clipping in some browsers */
+      padding-bottom: 2px;
+    }
+
+    .hero__subtitle {
+      max-width: 680px;
+      font-family: 'General Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.70);
+      text-align: center;
+    }
+
+    /* ── Responsive ────────────────────────────────────────── */
+
+    /* Tablet — shrink horizontal padding */
+    @media (max-width: 1100px) {
+      .navbar { padding: 20px 60px; }
+    }
+
+    /* Mobile — below md breakpoint (768 px) */
+    @media (max-width: 767px) {
+      .navbar {
+        padding: 20px 24px;
+      }
+
+      /* Collapse nav links on mobile */
+      .nav-list {
+        display: none;
+      }
+
+      .hero__body {
+        padding-top: 200px;
+        gap: 32px;
+      }
+
+      .hero__heading {
+        font-size: 36px;
+      }
+
+      .hero__subtitle {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero" aria-label="Hero">
+
+  <!-- ─── Background Video ────────────────────────────────── -->
+  <video
+    class="hero__video"
+    src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    aria-hidden="true"
+  ></video>
+
+  <!-- ─── 50% Black Overlay ───────────────────────────────── -->
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <!-- ─── All content above video ────────────────────────── -->
+  <div class="hero__layer">
+
+    <!-- ══ NAVBAR ══════════════════════════════════════════ -->
+    <nav class="navbar" aria-label="Main navigation">
+
+      <!-- Left: logo + nav links -->
+      <div class="navbar__left">
+
+        <!-- Placeholder logo wordmark (187 × 25 px) -->
+        <a href="#" class="logo" aria-label="Home">
+          <span class="logo__wordmark" aria-hidden="true">LOGOIPSUM</span>
+        </a>
+
+        <!-- 4 nav links — hidden on mobile (< 768 px) -->
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="#" class="nav-link">
+              Get Started
+              <span class="nav-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 5.5L7 9.5L11 5.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">
+              Developers
+              <span class="nav-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 5.5L7 9.5L11 5.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">
+              Features
+              <span class="nav-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 5.5L7 9.5L11 5.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">
+              Resources
+              <span class="nav-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 5.5L7 9.5L11 5.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: Join Waitlist — dark pill -->
+      <a href="#waitlist" class="pill-btn" aria-label="Join the waitlist">
+        <div class="pill-btn__inner pill-btn__inner--dark">
+          <div class="pill-btn__glow" aria-hidden="true"></div>
+          <span class="pill-btn__label pill-btn__label--white">Join Waitlist</span>
+        </div>
+      </a>
+
+    </nav>
+
+    <!-- ══ HERO BODY ════════════════════════════════════════ -->
+    <div class="hero__body" id="waitlist">
+
+      <!-- Early access badge -->
+      <div class="badge" role="note" aria-label="Early access available from May 1, 2026">
+        <div class="badge__dot" aria-hidden="true"></div>
+        <!-- Two inline spans — no gap between them, space is inside the text -->
+        <span class="badge__text badge__text--muted">Early access available from</span><span class="badge__text badge__text--solid">&nbsp;May 1, 2026</span>
+      </div>
+
+      <!-- Heading + Subtitle (24 px gap inside this group) -->
+      <div class="hero__textgroup">
+        <h1 class="hero__heading">
+          Web3 at the Speed of Experience
+        </h1>
+        <p class="hero__subtitle">
+          Powering seamless experiences and real-time connections, EOS is the
+          base for creators who move with purpose, leveraging resilience, speed,
+          and scale to shape the future.
+        </p>
+      </div>
+
+      <!-- CTA — white pill button -->
+      <a href="#" class="pill-btn" aria-label="Join the waitlist">
+        <div class="pill-btn__inner pill-btn__inner--light">
+          <div class="pill-btn__glow" aria-hidden="true"></div>
+          <span class="pill-btn__label pill-btn__label--black">Join Waitlist</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>
