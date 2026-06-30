@@ -418,6 +418,161 @@
       .hero-heading { font-size: 38px; }
       .hero-subtitle { font-size: 14px; }
     }
+
+    /* ═══════════════════════════════════════════════════════
+       MOTION LAYER — progress bar, marquee, magnetic buttons,
+       tilt cards, live ticker, animated route map
+    ═══════════════════════════════════════════════════════ */
+
+    .progress-bar {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, #F59E0B, #FBBF24);
+      box-shadow: 0 0 12px rgba(245,158,11,.6);
+      z-index: 9998;
+      transition: width .1s linear;
+    }
+
+    /* Hero scene mouse-parallax + spotlight */
+    .hero-scene { transition: transform .35s ease-out; }
+    .hero-spotlight {
+      position: absolute;
+      width: 520px; height: 520px;
+      left: 50%; top: 38%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,158,11,.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+      transition: left .5s ease-out, top .5s ease-out;
+    }
+
+    /* Hero headline stagger-in */
+    .hero-heading-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(36px);
+      animation: heroLineIn 1s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    .hero-heading-line:nth-child(1) { animation-delay: .15s; }
+    .hero-heading-line:nth-child(2) { animation-delay: .38s; }
+    @keyframes heroLineIn { to { opacity: 1; transform: translateY(0); } }
+
+    .hero-fade-in { opacity: 0; animation: heroFadeIn .9s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes heroFadeIn { to { opacity: 1; } }
+
+    /* Animated badge dot pulse */
+    .hero-badge__dot {
+      animation: badgePulse 1.8s ease-out infinite;
+    }
+    @keyframes badgePulse {
+      0%   { box-shadow: 0 0 0 0 rgba(245,158,11,.55); }
+      70%  { box-shadow: 0 0 0 7px rgba(245,158,11,0); }
+      100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+    }
+
+    /* Pulse glow for primary CTAs */
+    .pulse-glow { animation: pulseGlow 2.6s ease-in-out infinite; }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,.35); }
+      50%      { box-shadow: 0 0 0 12px rgba(245,158,11,0); }
+    }
+
+    /* Magnetic buttons + tilt-ready cards */
+    .pill-btn   { transition: transform .2s cubic-bezier(.16,1,.3,1), opacity .18s ease; }
+    [data-tilt] { transition: transform .25s cubic-bezier(.16,1,.3,1); will-change: transform; }
+
+    /* Infinite keyword marquee */
+    .marquee-strip {
+      position: relative;
+      background: #0A0F1A;
+      border-top: 1px solid #1E293B;
+      border-bottom: 1px solid #1E293B;
+      overflow: hidden;
+      padding: 16px 0;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 34s linear infinite;
+    }
+    .marquee-strip:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: flex; align-items: center; gap: 14px;
+      font-family: 'General Sans', sans-serif;
+      font-size: 14px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      white-space: nowrap;
+      padding: 0 28px;
+    }
+    .marquee-item--accent { color: #F59E0B; }
+    .marquee-dot { width: 5px; height: 5px; border-radius: 50%; background: #F59E0B; flex-shrink: 0; }
+
+    /* Live activity ticker */
+    .live-ticker {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'General Sans', sans-serif;
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,.55);
+    }
+    .live-ticker__dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #22c55e; flex-shrink: 0;
+      animation: livePulse 1.8s ease-out infinite;
+    }
+    @keyframes livePulse {
+      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,.55); }
+      70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+    .live-ticker__text { opacity: 1; transition: opacity .35s ease; }
+    .live-ticker__text.fading { opacity: 0; }
+
+    /* Animated route map (About → border crossing) */
+    .route-map-wrap { position: relative; }
+    .route-path {
+      fill: none;
+      stroke: rgba(245,158,11,.22);
+      stroke-width: 2;
+      stroke-dasharray: 6 8;
+      stroke-linecap: round;
+    }
+    .route-path--solid {
+      stroke: #F59E0B;
+      stroke-width: 2.5;
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      transition: stroke-dashoffset 2.2s cubic-bezier(.16,1,.3,1);
+    }
+    .route-map.visible .route-path--solid { stroke-dashoffset: 0; }
+    .route-truck-dot { opacity: 0; }
+    .route-map.visible .route-truck-dot {
+      animation: routeDrive 2.3s cubic-bezier(.4,0,.2,1) .1s forwards;
+    }
+    @keyframes routeDrive {
+      0%   { opacity: 1; transform: translate(18px, 92px); }
+      25%  { transform: translate(115px, 58px); }
+      50%  { transform: translate(255px, 18px); }
+      75%  { transform: translate(395px, 56px); }
+      100% { opacity: 1; transform: translate(498px, 92px); }
+    }
+    .route-pin { opacity: 0; transform: scale(.5); transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1); }
+    .route-map.visible .route-pin { opacity: 1; transform: scale(1); }
+    .route-map.visible .route-pin--end { transition-delay: 2s; }
+    .route-label { opacity: 0; transition: opacity .5s ease; }
+    .route-map.visible .route-label { opacity: 1; transition-delay: .3s; }
+    .route-map.visible .route-label--end { transition-delay: 2.2s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-heading-line, .hero-fade-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+      .marquee-track { animation: none !important; }
+      .route-map .route-path--solid, .route-map .route-truck-dot, .route-map .route-pin, .route-map .route-label { transition: none !important; animation: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; }
+    }
   </style>
 </head>
 
@@ -425,15 +580,19 @@
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
+  <!-- Scroll progress indicator -->
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+
   <!-- ═══════════════════════════════════════════════
        HERO — animated truck scene + web3 design
   ═══════════════════════════════════════════════ -->
   <section id="hero" class="hero-section" aria-label="Heavy Iron Logistics hero">
 
     <!-- ─── Animated scene background ─────────────── -->
-    <div class="hero-scene" aria-hidden="true">
+    <div class="hero-scene" id="hero-scene" aria-hidden="true">
       <div class="scene-sky"></div>
       <div class="scene-horizon-glow"></div>
+      <div class="hero-spotlight" id="hero-spotlight"></div>
 
       <!-- Road strip (bottom 30%) -->
       <div class="scene-road">
@@ -901,26 +1060,30 @@
       <div class="hero-body">
 
         <!-- Badge (DOT/MC authorized — web3 pill style) -->
-        <div class="hero-badge" role="note" aria-label="DOT and MC Authorized Carrier, Mission TX">
+        <div class="hero-badge hero-fade-in" style="animation-delay:.05s" role="note" aria-label="DOT and MC Authorized Carrier, live dispatch in Mission TX">
           <div class="hero-badge__dot" aria-hidden="true"></div>
-          <span class="hero-badge__text hero-badge__text--muted">DOT &amp; MC Authorized Carrier</span>
-          <span class="hero-badge__text hero-badge__text--solid">&nbsp;— Mission, TX</span>
+          <span class="hero-badge__text hero-badge__text--muted">DOT &amp; MC Authorized</span>
+          <span class="hero-badge__text hero-badge__text--solid">&nbsp;— Live Dispatch, Mission TX</span>
         </div>
 
         <!-- Heading + subtitle (24px gap inside group) -->
         <div class="hero-textgroup">
-          <h1 class="hero-heading">Move Heavy Iron.<br/>Across Every Border.</h1>
-          <p class="hero-subtitle">
-            Flatbed, lowboy, deck &amp; RGN trailer specialists. Seamless US–Mexico
-            cross-border freight, customs brokerage, and freight forwarding — powered
-            by deep border expertise from Mission, Texas.
+          <h1 class="hero-heading">
+            <span class="hero-heading-line">We Move What Others Won't.</span>
+            <span class="hero-heading-line">Across Every Border.</span>
+          </h1>
+          <p class="hero-subtitle hero-fade-in" style="animation-delay:.6s">
+            Flatbed, lowboy, deck &amp; RGN trailers built for the heaviest, widest,
+            most demanding freight — cleared through customs and across the US–Mexico
+            border without a missed pickup. Dispatch is live, 24 hours a day, from
+            Mission, Texas.
           </p>
         </div>
 
         <!-- CTA row (pill buttons — web3 style) -->
-        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+        <div class="hero-fade-in" style="animation-delay:.78s;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
           <!-- Primary: white pill -->
-          <a href="#contact" class="pill-btn" aria-label="Get a freight quote">
+          <a href="#contact" class="pill-btn pulse-glow" aria-label="Get a freight quote">
             <div class="pill-btn__inner pill-btn__inner--light">
               <div class="pill-btn__glow" aria-hidden="true"></div>
               <span class="pill-btn__label pill-btn__label--black">Get a Quote</span>
@@ -930,13 +1093,13 @@
           <a href="tel:9563404848" class="pill-btn" aria-label="Call dispatch 956-340-4848">
             <div class="pill-btn__inner pill-btn__inner--dark">
               <div class="pill-btn__glow" aria-hidden="true"></div>
-              <span class="pill-btn__label pill-btn__label--white">Call Dispatch</span>
+              <span class="pill-btn__label pill-btn__label--white">Call Dispatch Now</span>
             </div>
           </a>
         </div>
 
         <!-- Trust strip -->
-        <div class="hero-trust" aria-label="Trust certifications">
+        <div class="hero-trust hero-fade-in" style="animation-delay:.95s" aria-label="Trust certifications">
           <div class="trust-item">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
@@ -968,11 +1131,22 @@
 
   </section><!-- /hero -->
 
+  <!-- ─── MARQUEE — infinite keyword ticker ─────────────────── -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
+
   <main id="main">
 
     <!-- ─── STATS ────────────────────────────────────────────── -->
     <section aria-label="Company statistics" class="relative py-12 bg-iron-900 border-y border-iron-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center mb-10">
+          <div class="live-ticker" role="status" aria-live="polite">
+            <span class="live-ticker__dot" aria-hidden="true"></span>
+            <span class="live-ticker__text" id="live-ticker-text">Load #4521 cleared customs — Pharr Bridge → Reynosa, MX</span>
+          </div>
+        </div>
         <dl class="grid grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="text-center reveal">
             <dt class="sr-only">Fleet types</dt>
@@ -1010,16 +1184,17 @@
     <section id="services" class="py-20 lg:py-28 relative" aria-labelledby="services-heading">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mb-16 reveal">
-          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">What We Haul</p>
+          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">Freight Nobody Else Will Touch</p>
           <h2 id="services-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white leading-tight">
-            Specialized Freight<br/><span class="text-iron-400">Services</span>
+            Built For The Loads<br/><span class="text-iron-400">Everyone Else Turns Down</span>
           </h2>
+          <p class="text-iron-400 mt-5 max-w-lg leading-relaxed">From a single oversized machine to a multi-unit cross-border move — if it's heavy, awkward, or time-critical, chances are we've already hauled it.</p>
           <div class="w-16 h-1 bg-amber-500 mt-5 rounded-full"></div>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
           <!-- Cross-Border -->
-          <article class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 reveal relative overflow-hidden" aria-labelledby="svc-cb">
+          <article class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 reveal relative overflow-hidden" data-tilt aria-labelledby="svc-cb">
             <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center mb-5 border border-amber-500/20">
               <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1035,7 +1210,7 @@
           </article>
 
           <!-- Freight Forwarding -->
-          <article class="card-lift bg-iron-900 border border-amber-500/30 rounded-xl p-7 reveal relative overflow-hidden glow-amber-sm" style="transition-delay:.1s" aria-labelledby="svc-ff">
+          <article class="card-lift bg-iron-900 border border-amber-500/30 rounded-xl p-7 reveal relative overflow-hidden glow-amber-sm" style="transition-delay:.1s" data-tilt aria-labelledby="svc-ff">
             <div class="absolute top-4 right-4"><span class="bg-amber-500 text-iron-950 text-xs font-heading font-700 uppercase tracking-wider px-2.5 py-1 rounded">Popular</span></div>
             <div class="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center mb-5 border border-amber-500/40">
               <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -1052,7 +1227,7 @@
           </article>
 
           <!-- Heavy Haul -->
-          <article class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 reveal relative overflow-hidden" style="transition-delay:.2s" aria-labelledby="svc-hh">
+          <article class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 reveal relative overflow-hidden" style="transition-delay:.2s" data-tilt aria-labelledby="svc-hh">
             <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center mb-5 border border-amber-500/20">
               <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
@@ -1076,15 +1251,15 @@
     <section id="fleet" class="py-20 lg:py-28 relative" aria-labelledby="fleet-heading">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">Our Equipment</p>
+          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">Our Equipment, Your Advantage</p>
           <h2 id="fleet-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white">
-            Specialized Fleet<br/><span class="text-iron-400">Capabilities</span>
+            A Trailer For<br/><span class="text-iron-400">Every Impossible Load</span>
           </h2>
           <div class="w-16 h-1 bg-amber-500 mt-5 mx-auto rounded-full"></div>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <!-- Flatbed -->
-          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" role="article" aria-label="Flatbed trailers">
+          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" data-tilt role="article" aria-label="Flatbed trailers">
             <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
             <div class="p-6">
               <svg viewBox="0 0 80 40" class="w-20 h-10 mb-5" fill="none" aria-hidden="true">
@@ -1103,7 +1278,7 @@
             </div>
           </div>
           <!-- Step Deck -->
-          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.1s" role="article" aria-label="Step deck trailers">
+          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.1s" data-tilt role="article" aria-label="Step deck trailers">
             <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
             <div class="p-6">
               <svg viewBox="0 0 80 40" class="w-20 h-10 mb-5" fill="none" aria-hidden="true">
@@ -1122,7 +1297,7 @@
             </div>
           </div>
           <!-- Lowboy -->
-          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.2s" role="article" aria-label="Lowboy trailers">
+          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.2s" data-tilt role="article" aria-label="Lowboy trailers">
             <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
             <div class="p-6">
               <svg viewBox="0 0 80 40" class="w-20 h-10 mb-5" fill="none" aria-hidden="true">
@@ -1141,7 +1316,7 @@
             </div>
           </div>
           <!-- RGN -->
-          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.3s" role="article" aria-label="Removable gooseneck trailers">
+          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.3s" data-tilt role="article" aria-label="Removable gooseneck trailers">
             <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
             <div class="p-6">
               <svg viewBox="0 0 80 40" class="w-20 h-10 mb-5" fill="none" aria-hidden="true">
@@ -1174,9 +1349,9 @@
           <div class="reveal-left">
             <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">About Us</p>
             <h2 id="about-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white leading-tight mb-6">
-              Your Partner for<br/><span class="text-amber-500">Demanding Hauls</span>
+              The Border Is Our<br/><span class="text-amber-500">Home Turf</span>
             </h2>
-            <p class="text-iron-300 leading-relaxed mb-5">Heavy Iron Logistics is a Mission, Texas-based specialized freight carrier operating at the US–Mexico border. We combine deep local knowledge of cross-border logistics with the expertise needed to move the heaviest and most complex loads.</p>
+            <p class="text-iron-300 leading-relaxed mb-5">Heavy Iron Logistics is a Mission, Texas-based specialized freight carrier operating at the US–Mexico border. While other carriers treat the crossing as a bottleneck, we built our entire operation around it — turning border expertise into your competitive edge.</p>
             <p class="text-iron-400 leading-relaxed mb-8">Licensed under DOT and MC authority, we operate as both a direct carrier and freight forwarder. Our customs brokerage partnerships ensure seamless import and export documentation for every shipment — no matter how heavy, wide, or tall.</p>
             <div class="flex flex-wrap gap-3 mb-8">
               <div class="flex items-center gap-2 bg-iron-800 border border-iron-700 rounded-lg px-4 py-2.5">
@@ -1208,6 +1383,30 @@
             </div>
           </div>
           <div class="space-y-5 reveal">
+            <!-- Animated border-crossing route map -->
+            <div class="bg-iron-950 border border-iron-800 rounded-xl p-6 hover:border-amber-500/30 transition-colors duration-300 route-map-wrap">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-heading font-700 text-white text-lg">The Route We Know Best</h3>
+                <span class="text-amber-500 text-xs font-heading font-600 uppercase tracking-wider">~20 Min Crossing</span>
+              </div>
+              <svg class="route-map" id="route-map" viewBox="0 0 520 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path class="route-path" d="M18,92 C118,92 138,22 258,22 C378,22 398,92 498,92"/>
+                <path class="route-path route-path--solid" d="M18,92 C118,92 138,22 258,22 C378,22 398,92 498,92"/>
+                <circle class="route-truck-dot" cx="0" cy="0" r="10" fill="none" stroke="#F59E0B" stroke-width="1.5" opacity=".4"/>
+                <circle class="route-truck-dot" cx="0" cy="0" r="6" fill="#F59E0B"/>
+                <g class="route-pin route-pin--start" transform="translate(18,92)">
+                  <circle r="9" fill="none" stroke="#F59E0B" stroke-width="1.5" opacity=".4"/>
+                  <circle r="5" fill="#F59E0B"/>
+                </g>
+                <g class="route-pin route-pin--end" transform="translate(498,92)">
+                  <circle r="9" fill="none" stroke="#22c55e" stroke-width="1.5" opacity=".4"/>
+                  <circle r="5" fill="#22c55e"/>
+                </g>
+                <text class="route-label" x="18" y="74" text-anchor="middle" fill="#94A3B8" font-family="General Sans, sans-serif" font-size="11" font-weight="500">Mission, TX</text>
+                <text class="route-label route-label--end" x="498" y="74" text-anchor="middle" fill="#94A3B8" font-family="General Sans, sans-serif" font-size="11" font-weight="500">Mexico</text>
+              </svg>
+              <p class="text-iron-500 text-xs mt-3 leading-relaxed">From our Mission, TX gateway across the Pharr–Reynosa international bridge — we run this crossing daily, so paperwork never holds up the load.</p>
+            </div>
             <div class="bg-iron-950 border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
               <span class="font-heading font-800 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">01</span>
               <div><h3 class="font-heading font-700 text-white text-lg mb-1">Border Expertise</h3><p class="text-iron-400 text-sm leading-relaxed">Based in Mission, TX — steps from the US–Mexico border crossing. We know the documentation, regulations, and timing for smooth cross-border moves.</p></div>
@@ -1230,11 +1429,12 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16 reveal">
           <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">Reach Us</p>
-          <h2 id="contact-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white">Get In Touch</h2>
+          <h2 id="contact-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white">Dispatch Is Standing By</h2>
+          <p class="text-iron-400 mt-5 max-w-md mx-auto leading-relaxed">Call, email, or stop by our Mission, TX gateway — someone answers, day or night.</p>
           <div class="w-16 h-1 bg-amber-500 mt-5 mx-auto rounded-full"></div>
         </div>
         <div class="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <div class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 text-center reveal">
+          <div class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 text-center reveal" data-tilt>
             <div class="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-5">
               <svg class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/></svg>
             </div>
@@ -1244,7 +1444,7 @@
             <a href="tel:9563404848" class="block text-amber-400 hover:text-amber-300 font-medium transition-colors cursor-pointer mt-3 mb-1">956-340-4848</a>
             <span class="text-iron-500 text-xs">Dispatch / Alternate</span>
           </div>
-          <div class="card-lift bg-iron-900 border border-amber-500/30 rounded-xl p-7 text-center reveal glow-amber-sm" style="transition-delay:.1s">
+          <div class="card-lift bg-iron-900 border border-amber-500/30 rounded-xl p-7 text-center reveal glow-amber-sm" style="transition-delay:.1s" data-tilt>
             <div class="w-14 h-14 bg-amber-500/20 border border-amber-500/40 rounded-full flex items-center justify-center mx-auto mb-5">
               <svg class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
@@ -1254,7 +1454,7 @@
             <a href="mailto:dispatch@heavyironlog.com" class="block text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors cursor-pointer mt-3 mb-1 break-all">dispatch@heavyironlog.com</a>
             <span class="text-iron-500 text-xs">Dispatch Team</span>
           </div>
-          <div class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 text-center reveal" style="transition-delay:.2s">
+          <div class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 text-center reveal" style="transition-delay:.2s" data-tilt>
             <div class="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-5">
               <svg class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
@@ -1270,10 +1470,10 @@
         <!-- CTA Banner -->
         <div class="mt-12 bg-iron-900 border border-amber-500/20 rounded-2xl p-8 lg:p-12 text-center relative overflow-hidden reveal">
           <div class="absolute top-0 left-0 right-0 h-1 bg-amber-500" aria-hidden="true"></div>
-          <h3 class="font-heading font-800 text-3xl lg:text-4xl text-white mb-3">Ready to Move Heavy Iron?</h3>
-          <p class="text-iron-400 max-w-xl mx-auto mb-8 leading-relaxed">Whether it's a single machine or a full fleet relocation across the US–Mexico border, our team is ready to plan your move.</p>
+          <h3 class="font-heading font-800 text-3xl lg:text-4xl text-white mb-3">Got A Load That Scares Other Carriers?</h3>
+          <p class="text-iron-400 max-w-xl mx-auto mb-8 leading-relaxed">Whether it's a single oversized machine or a full fleet relocation across the US–Mexico border, dispatch is standing by right now to plan your move.</p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:dispatch@heavyironlog.com" class="pill-btn" aria-label="Email dispatch for a quote">
+            <a href="mailto:dispatch@heavyironlog.com" class="pill-btn pulse-glow" aria-label="Email dispatch for a quote">
               <div class="pill-btn__inner pill-btn__inner--light">
                 <div class="pill-btn__glow" aria-hidden="true"></div>
                 <span class="pill-btn__label pill-btn__label--black">Email for a Quote</span>
@@ -1301,7 +1501,7 @@
             <svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect width="36" height="36" rx="4" fill="#F59E0B"/><path d="M6 24V16l5-6h14l5 6v8H6z" fill="#0A0F1A"/><rect x="8" y="24" width="4" height="3" rx="2" fill="#F59E0B"/><rect x="24" y="24" width="4" height="3" rx="2" fill="#F59E0B"/><path d="M6 20h24" stroke="#F59E0B" stroke-width="1.5"/></svg>
             <div><span class="block font-heading font-700 text-white text-sm uppercase tracking-tight">Heavy Iron Logistics</span><span class="block text-iron-500 text-xs">Mission, TX</span></div>
           </a>
-          <p class="text-iron-500 text-sm leading-relaxed max-w-xs">Specialized flatbed, lowboy, deck &amp; RGN freight carrier. Cross-border US–Mexico logistics, freight forwarding, and customs brokerage partner.</p>
+          <p class="text-iron-500 text-sm leading-relaxed max-w-xs">Specialized flatbed, lowboy, deck &amp; RGN freight carrier moving heavy iron across the US–Mexico border — every load, every day, on time.</p>
         </div>
         <div>
           <h4 class="font-heading font-600 text-white text-sm uppercase tracking-wider mb-4">Services</h4>
@@ -1339,6 +1539,111 @@
     if (roadDashes) {
       const html = Array.from({length: 30}, () => '<div class="road-dash"></div>').join('');
       roadDashes.innerHTML = html + html; // duplicate for seamless loop
+    }
+
+    // ── Build infinite keyword marquee ──────────────────────────
+    const marqueeTrack = document.getElementById('marquee-track');
+    if (marqueeTrack) {
+      const words = [
+        'Flatbed', 'Step Deck', 'Lowboy', 'RGN', 'Cross-Border Customs',
+        'Freight Forwarding', '24/7 Dispatch', 'DOT & MC Authorized', 'Mission, TX Gateway'
+      ];
+      const accent = new Set(['24/7 Dispatch', 'Cross-Border Customs']);
+      const group = words.map(w => `<span class="marquee-item${accent.has(w) ? ' marquee-item--accent' : ''}"><span class="marquee-dot" aria-hidden="true"></span>${w}</span>`).join('');
+      marqueeTrack.innerHTML = group + group; // duplicate for seamless loop
+    }
+
+    // ── Scroll progress bar ─────────────────────────────────────
+    const progressBar = document.getElementById('progress-bar');
+    function updateProgressBar() {
+      if (!progressBar) return;
+      const h = document.documentElement;
+      const scrolled = h.scrollTop;
+      const max = h.scrollHeight - h.clientHeight;
+      progressBar.style.width = max > 0 ? `${(scrolled / max) * 100}%` : '0%';
+    }
+    window.addEventListener('scroll', updateProgressBar, { passive: true });
+    updateProgressBar();
+
+    // ── Hero mouse-parallax + spotlight ─────────────────────────
+    const heroSceneEl = document.getElementById('hero-scene');
+    const heroSpotlight = document.getElementById('hero-spotlight');
+    const heroSectionEl = document.getElementById('hero');
+    if (heroSceneEl && heroSectionEl && window.matchMedia('(hover: hover)').matches) {
+      heroSectionEl.addEventListener('mousemove', (e) => {
+        const rect = heroSectionEl.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;   // 0..1
+        const py = (e.clientY - rect.top) / rect.height;   // 0..1
+        const dx = (px - 0.5) * 18;
+        const dy = (py - 0.5) * 10;
+        heroSceneEl.style.transform = `translate(${dx}px, ${dy}px)`;
+        if (heroSpotlight) {
+          heroSpotlight.style.left = `${px * 100}%`;
+          heroSpotlight.style.top  = `${py * 100}%`;
+        }
+      });
+      heroSectionEl.addEventListener('mouseleave', () => {
+        heroSceneEl.style.transform = 'translate(0, 0)';
+        if (heroSpotlight) { heroSpotlight.style.left = '50%'; heroSpotlight.style.top = '38%'; }
+      });
+    }
+
+    // ── Magnetic pill buttons ───────────────────────────────────
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll('.pill-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const dx = (e.clientX - rect.left - rect.width / 2) * 0.28;
+          const dy = (e.clientY - rect.top - rect.height / 2) * 0.35;
+          btn.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0, 0)'; });
+      });
+
+      // ── Tilt cards ─────────────────────────────────────────────
+      document.querySelectorAll('[data-tilt]').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const px = (e.clientX - rect.left) / rect.width;
+          const py = (e.clientY - rect.top) / rect.height;
+          const rotateY = (px - 0.5) * 10;
+          const rotateX = (0.5 - py) * 10;
+          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px) scale(1.015)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      });
+    }
+
+    // ── Live dispatch ticker ────────────────────────────────────
+    const liveTickerText = document.getElementById('live-ticker-text');
+    if (liveTickerText) {
+      const liveMessages = [
+        'Load #4521 cleared customs — Pharr Bridge → Reynosa, MX',
+        'RGN trailer dispatched — Mission, TX → Monterrey, MX',
+        'Flatbed pickup confirmed — McAllen, TX heavy equipment yard',
+        'Lowboy crossing complete — 38,000 lb excavator delivered',
+        'Dispatch online 24/7 — call (956) 522-0382 anytime',
+        'Step deck en route — oversize load, escort secured',
+      ];
+      let liveIdx = 0;
+      setInterval(() => {
+        liveTickerText.classList.add('fading');
+        setTimeout(() => {
+          liveIdx = (liveIdx + 1) % liveMessages.length;
+          liveTickerText.textContent = liveMessages[liveIdx];
+          liveTickerText.classList.remove('fading');
+        }, 350);
+      }, 3800);
+    }
+
+    // ── Animated route map trigger ──────────────────────────────
+    const routeMapEl = document.getElementById('route-map');
+    if (routeMapEl) {
+      new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { routeMapEl.classList.add('visible'); obs.unobserve(routeMapEl); }
+        });
+      }, { threshold: 0.4 }).observe(routeMapEl);
     }
 
     // ── Sticky navbar background ───────────────────────────────
