@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heavy Iron Logistics — Specialized Freight &amp; Cross-Border Transport</title>
-  <meta name="description" content="Specialized flatbed, lowboy, deck and RGN trailer transport. Cross-border US–Mexico logistics, freight forwarding and customs brokerage — Mission, TX." />
+  <title>Heavy Iron Logistics — Heavy-Haul Carrier &amp; Freight Broker, US · Canada · Mexico</title>
+  <meta name="description" content="FMCSA-authorized heavy-haul carrier and freight broker (USDOT 2541334, MC-884820). RGN, lowboy, drop deck and flatbed transport for construction, mining, oilfield and crane equipment across the US, Canada and Mexico — Mission, TX." />
 
   <!-- General Sans (hero typography — Fontshare) -->
   <link rel="preconnect" href="https://api.fontshare.com" />
@@ -13,7 +13,7 @@
   <!-- Space Grotesk + Inter (body content) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -25,9 +25,12 @@
             heading: ['Space Grotesk', 'sans-serif'],
             sans:    ['General Sans', 'system-ui', 'sans-serif'],
             body:    ['Inter', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'monospace'],
           },
           colors: {
             amber: { 400:'#FBBF24', 500:'#F59E0B', 600:'#D97706', 700:'#B45309' },
+            steel: { 300:'#7DD3FC', 400:'#38BDF8', 500:'#0EA5E9', 600:'#0284C7', 700:'#0369A1' },
+            rust:  { 400:'#FB7185', 500:'#F43F5E', 600:'#E11D48' },
             iron:  { 50:'#F8FAFC', 100:'#F1F5F9', 200:'#E2E8F0', 300:'#CBD5E1',
                      400:'#94A3B8', 500:'#64748B', 600:'#475569', 700:'#334155',
                      800:'#1E293B', 900:'#0F172A', 950:'#0A0F1A' },
@@ -69,6 +72,44 @@
     :focus-visible { outline: 2px solid #F59E0B; outline-offset: 3px; }
     .skip-link { position:absolute; top:-40px; left:1rem; background:#F59E0B; color:#0A0F1A; padding:.5rem 1rem; font-weight:700; border-radius:4px; z-index:9999; transition:top .2s; }
     .skip-link:focus { top:1rem; }
+
+    /* ── Depth: layered panel backgrounds (embossed metal feel) ── */
+    .iron-panel {
+      background: linear-gradient(155deg, #182335 0%, #101a2c 55%, #0c1322 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05), inset 0 0 0 1px rgba(255,255,255,.025), 0 1px 3px rgba(0,0,0,.45);
+    }
+    .iron-panel-dark {
+      background: linear-gradient(155deg, #101a2c 0%, #0a0f1a 60%, #070a11 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 1px 3px rgba(0,0,0,.5);
+    }
+
+    /* ── Depth: drifting ambient aurora blobs ─────────────────── */
+    .aurora { isolation: isolate; }
+    .aurora::before, .aurora::after {
+      content: ''; position: absolute; border-radius: 50%; filter: blur(90px);
+      opacity: .16; pointer-events: none; z-index: -1;
+    }
+    .aurora::before { width: 420px; height: 420px; background: #F59E0B; top: -140px; left: -100px; animation: auroraDrift1 19s ease-in-out infinite alternate; }
+    .aurora::after  { width: 380px; height: 380px; background: #0EA5E9; bottom: -150px; right: -80px;  animation: auroraDrift2 23s ease-in-out infinite alternate; }
+    @keyframes auroraDrift1 { from { transform: translate(0,0); } to { transform: translate(70px, 50px); } }
+    @keyframes auroraDrift2 { from { transform: translate(0,0); } to { transform: translate(-60px, -40px); } }
+    @media (prefers-reduced-motion: reduce) { .aurora::before, .aurora::after { animation: none; } }
+
+    /* ── Depth: gradient text treatment ───────────────────────── */
+    .text-gradient-amber {
+      background: linear-gradient(100deg, #FBBF24 10%, #F59E0B 45%, #FB923C 80%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .text-gradient-steel {
+      background: linear-gradient(100deg, #7DD3FC 10%, #38BDF8 50%, #0EA5E9 90%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+
+    /* ── Subtle full-page grain for premium texture ───────────── */
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: .035; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
 
     /* ═══════════════════════════════════════════════════════
        HERO SECTION — animated truck scene + web3 design
@@ -361,7 +402,7 @@
       font-family: 'General Sans', sans-serif;
       font-size: 13px; font-weight: 500; line-height: 1;
     }
-    .hero-badge__text--muted { color: rgba(255,255,255,.60); }
+    .hero-badge__text--muted { color: rgba(255,255,255,.60); font-family: 'JetBrains Mono', monospace; letter-spacing: .03em; }
     .hero-badge__text--solid { color: #fff; }
 
     /* ── Heading + subtitle group ─────────────────────────── */
@@ -400,7 +441,7 @@
     }
     .trust-item {
       display: flex; align-items: center; gap: 6px;
-      font-family: 'General Sans', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 12px; font-weight: 500;
       color: rgba(255,255,255,.45);
       white-space: nowrap;
@@ -1060,9 +1101,9 @@
       <div class="hero-body">
 
         <!-- Badge (DOT/MC authorized — web3 pill style) -->
-        <div class="hero-badge hero-fade-in" style="animation-delay:.05s" role="note" aria-label="DOT and MC Authorized Carrier, live dispatch in Mission TX">
+        <div class="hero-badge hero-fade-in" style="animation-delay:.05s" role="note" aria-label="FMCSA authorized carrier and broker, live dispatch in Mission TX">
           <div class="hero-badge__dot" aria-hidden="true"></div>
-          <span class="hero-badge__text hero-badge__text--muted">DOT &amp; MC Authorized</span>
+          <span class="hero-badge__text hero-badge__text--muted">FMCSA Authorized · USDOT 2541334</span>
           <span class="hero-badge__text hero-badge__text--solid">&nbsp;— Live Dispatch, Mission TX</span>
         </div>
 
@@ -1073,9 +1114,9 @@
             <span class="hero-heading-line">Across Every Border.</span>
           </h1>
           <p class="hero-subtitle hero-fade-in" style="animation-delay:.6s">
-            Flatbed, lowboy, deck &amp; RGN trailers built for the heaviest, widest,
-            most demanding freight — cleared through customs and across the US–Mexico
-            border without a missed pickup. Dispatch is live, 24 hours a day, from
+            RGN, lowboy, drop deck &amp; flatbed trailers built for earthmovers, drill
+            rigs, and oversized cranes — moving freight across the United States, Canada,
+            and Mexico without a missed pickup. Dispatch is live, 24 hours a day, from
             Mission, Texas.
           </p>
         </div>
@@ -1104,19 +1145,19 @@
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
             </svg>
-            DOT Compliant
+            USDOT 2541334
           </div>
           <div class="trust-item">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
             </svg>
-            MC Authorized
+            MC-884820
           </div>
           <div class="trust-item">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
             </svg>
-            Cross-Border Customs
+            US · Canada · Mexico
           </div>
           <div class="trust-item">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -1139,7 +1180,7 @@
   <main id="main">
 
     <!-- ─── STATS ────────────────────────────────────────────── -->
-    <section aria-label="Company statistics" class="relative py-12 bg-iron-900 border-y border-iron-800">
+    <section aria-label="Company statistics" class="relative aurora py-12 bg-iron-900 border-y border-iron-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-center mb-10">
           <div class="live-ticker" role="status" aria-live="polite">
@@ -1151,28 +1192,28 @@
           <div class="text-center reveal">
             <dt class="sr-only">Fleet types</dt>
             <dd>
-              <span class="block font-heading font-800 text-4xl lg:text-5xl text-amber-500 counter-val" data-target="4" data-suffix="+">4+</span>
+              <span class="block font-mono font-700 text-4xl lg:text-5xl text-gradient-amber counter-val" data-target="4" data-suffix="+">4+</span>
               <span class="block text-iron-400 text-sm mt-1 font-medium">Trailer Types</span>
             </dd>
           </div>
           <div class="text-center reveal" style="transition-delay:.1s">
             <dt class="sr-only">Countries served</dt>
             <dd>
-              <span class="block font-heading font-800 text-4xl lg:text-5xl text-amber-500 counter-val" data-target="2" data-suffix=" Countries">2</span>
+              <span class="block font-mono font-700 text-4xl lg:text-5xl text-gradient-amber counter-val" data-target="3" data-suffix=" Countries">3</span>
               <span class="block text-iron-400 text-sm mt-1 font-medium">Countries Served</span>
             </dd>
           </div>
           <div class="text-center reveal" style="transition-delay:.2s">
             <dt class="sr-only">Dispatch availability</dt>
             <dd>
-              <span class="block font-heading font-800 text-4xl lg:text-5xl text-amber-500">24/7</span>
+              <span class="block font-mono font-700 text-4xl lg:text-5xl text-gradient-amber">24/7</span>
               <span class="block text-iron-400 text-sm mt-1 font-medium">Dispatch Available</span>
             </dd>
           </div>
           <div class="text-center reveal" style="transition-delay:.3s">
             <dt class="sr-only">Compliance</dt>
             <dd>
-              <span class="block font-heading font-800 text-4xl lg:text-5xl text-amber-500">100%</span>
+              <span class="block font-mono font-700 text-4xl lg:text-5xl text-gradient-amber">100%</span>
               <span class="block text-iron-400 text-sm mt-1 font-medium">DOT / MC Compliant</span>
             </dd>
           </div>
@@ -1184,61 +1225,61 @@
     <section id="services" class="py-20 lg:py-28 relative" aria-labelledby="services-heading">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mb-16 reveal">
-          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">Freight Nobody Else Will Touch</p>
+          <p class="text-amber-500 font-mono font-600 text-xs uppercase tracking-[0.25em] mb-3">Freight Nobody Else Will Touch</p>
           <h2 id="services-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white leading-tight">
-            Built For The Loads<br/><span class="text-iron-400">Everyone Else Turns Down</span>
+            Built For The Loads<br/><span class="text-gradient-steel">Everyone Else Turns Down</span>
           </h2>
-          <p class="text-iron-400 mt-5 max-w-lg leading-relaxed">From a single oversized machine to a multi-unit cross-border move — if it's heavy, awkward, or time-critical, chances are we've already hauled it.</p>
+          <p class="text-iron-400 mt-5 max-w-lg leading-relaxed">Three industry verticals, one specialized fleet — if it's heavy, awkward, or time-critical, chances are we've already hauled it across the border.</p>
           <div class="w-16 h-1 bg-amber-500 mt-5 rounded-full"></div>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          <!-- Cross-Border -->
-          <article class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 reveal relative overflow-hidden" data-tilt aria-labelledby="svc-cb">
-            <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center mb-5 border border-amber-500/20">
-              <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
-            <h3 id="svc-cb" class="font-heading font-700 text-white text-xl mb-3">Cross-Border Transport</h3>
-            <p class="text-iron-400 text-sm leading-relaxed">Full US–Mexico import and export logistics for heavy machinery, with customs brokerage partner coordination from our Mission, TX gateway.</p>
-            <ul class="mt-5 pt-5 border-t border-iron-800 space-y-2" role="list">
-              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>US Importing &amp; Exporting</li>
-              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Customs Brokerage Partner</li>
-              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Mission, TX Border Gateway</li>
-            </ul>
-          </article>
-
-          <!-- Freight Forwarding -->
-          <article class="card-lift bg-iron-900 border border-amber-500/30 rounded-xl p-7 reveal relative overflow-hidden glow-amber-sm" style="transition-delay:.1s" data-tilt aria-labelledby="svc-ff">
-            <div class="absolute top-4 right-4"><span class="bg-amber-500 text-iron-950 text-xs font-heading font-700 uppercase tracking-wider px-2.5 py-1 rounded">Popular</span></div>
-            <div class="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center mb-5 border border-amber-500/40">
-              <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <h3 id="svc-ff" class="font-heading font-700 text-white text-xl mb-3">Freight Forwarding</h3>
-            <p class="text-iron-400 text-sm leading-relaxed">We act as your intermediary forwarder — coordinating carriers, permits, documentation, and delivery so you can focus on your business.</p>
-            <ul class="mt-5 pt-5 border-t border-iron-800 space-y-2" role="list">
-              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Oversize &amp; Overweight Permits</li>
-              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Route Surveys &amp; Planning</li>
-              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>End-to-End Coordination</li>
-            </ul>
-          </article>
-
-          <!-- Heavy Haul -->
-          <article class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 reveal relative overflow-hidden" style="transition-delay:.2s" data-tilt aria-labelledby="svc-hh">
+          <!-- Construction Equipment -->
+          <article class="card-lift iron-panel border border-iron-800 rounded-xl p-7 reveal relative overflow-hidden" data-tilt aria-labelledby="svc-construction">
             <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center mb-5 border border-amber-500/20">
               <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
               </svg>
             </div>
-            <h3 id="svc-hh" class="font-heading font-700 text-white text-xl mb-3">Heavy Haul Specialized</h3>
-            <p class="text-iron-400 text-sm leading-relaxed">Construction equipment, industrial machinery, and oversized loads requiring specialized trailer configurations and expert handling.</p>
+            <h3 id="svc-construction" class="font-heading font-700 text-white text-xl mb-3">Construction Equipment</h3>
+            <p class="text-iron-400 text-sm leading-relaxed">Earthmovers, excavators, and infrastructure machinery — loaded, secured, and cleared across the US, Canada, and Mexico.</p>
             <ul class="mt-5 pt-5 border-t border-iron-800 space-y-2" role="list">
-              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Construction Equipment</li>
-              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Industrial Machinery</li>
-              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Agricultural Equipment</li>
+              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Earthmovers &amp; Excavators</li>
+              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Infrastructure Machinery</li>
+              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Mission, TX Border Gateway</li>
+            </ul>
+          </article>
+
+          <!-- Mining & Oilfield -->
+          <article class="card-lift bg-iron-900 border border-rust-500/30 rounded-xl p-7 reveal relative overflow-hidden" style="transition-delay:.1s; box-shadow:0 0 20px rgba(244,63,94,.12);" data-tilt aria-labelledby="svc-mining">
+            <div class="absolute top-4 right-4"><span class="bg-rust-500 text-white text-xs font-heading font-700 uppercase tracking-wider px-2.5 py-1 rounded">Popular</span></div>
+            <div class="w-12 h-12 bg-rust-500/15 rounded-lg flex items-center justify-center mb-5 border border-rust-500/40">
+              <svg class="w-6 h-6 text-rust-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 id="svc-mining" class="font-heading font-700 text-white text-xl mb-3">Mining &amp; Oilfield Gear</h3>
+            <p class="text-iron-400 text-sm leading-relaxed">High-capacity drills, rigging, and heavy industrial plant assets — the loads most carriers won't quote, we run on schedule.</p>
+            <ul class="mt-5 pt-5 border-t border-iron-800 space-y-2" role="list">
+              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-rust-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>High-Capacity Drill Rigs</li>
+              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-rust-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Rigging &amp; Plant Assets</li>
+              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-rust-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Hidalgo, TX Holding Yard</li>
+            </ul>
+          </article>
+
+          <!-- Industrial Cranes -->
+          <article class="card-lift bg-iron-900 border border-steel-500/30 rounded-xl p-7 reveal relative overflow-hidden" style="transition-delay:.2s; box-shadow:0 0 20px rgba(14,165,233,.12);" data-tilt aria-labelledby="svc-cranes">
+            <div class="w-12 h-12 bg-steel-500/15 rounded-lg flex items-center justify-center mb-5 border border-steel-500/40">
+              <svg class="w-6 h-6 text-steel-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V10l5-5 5 5v11M10 21v-6h4v6M17 10l3-3M5 10L2 7"/>
+              </svg>
+            </div>
+            <h3 id="svc-cranes" class="font-heading font-700 text-white text-xl mb-3">Industrial Cranes</h3>
+            <p class="text-iron-400 text-sm leading-relaxed">Oversized lifting systems and subdimensional components, engineered for safe transport on RGN and multi-axle configurations.</p>
+            <ul class="mt-5 pt-5 border-t border-iron-800 space-y-2" role="list">
+              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Oversized Lifting Systems</li>
+              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Subdimensional Components</li>
+              <li class="flex items-center gap-2 text-iron-300 text-sm"><svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>US · Canada · Mexico Coverage</li>
             </ul>
           </article>
         </div>
@@ -1251,15 +1292,15 @@
     <section id="fleet" class="py-20 lg:py-28 relative" aria-labelledby="fleet-heading">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">Our Equipment, Your Advantage</p>
+          <p class="text-amber-500 font-mono font-600 text-xs uppercase tracking-[0.25em] mb-3">Our Equipment, Your Advantage</p>
           <h2 id="fleet-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white">
-            A Trailer For<br/><span class="text-iron-400">Every Impossible Load</span>
+            A Trailer For<br/><span class="text-gradient-amber">Every Impossible Load</span>
           </h2>
           <div class="w-16 h-1 bg-amber-500 mt-5 mx-auto rounded-full"></div>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <!-- Flatbed -->
-          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" data-tilt role="article" aria-label="Flatbed trailers">
+          <div class="group card-lift iron-panel border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" data-tilt role="article" aria-label="Flatbed trailers">
             <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
             <div class="p-6">
               <svg viewBox="0 0 80 40" class="w-20 h-10 mb-5" fill="none" aria-hidden="true">
@@ -1278,7 +1319,7 @@
             </div>
           </div>
           <!-- Step Deck -->
-          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.1s" data-tilt role="article" aria-label="Step deck trailers">
+          <div class="group card-lift iron-panel border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.1s" data-tilt role="article" aria-label="Drop deck trailers">
             <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
             <div class="p-6">
               <svg viewBox="0 0 80 40" class="w-20 h-10 mb-5" fill="none" aria-hidden="true">
@@ -1291,13 +1332,13 @@
                 <circle cx="58" cy="28" r="7" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
                 <circle cx="58" cy="28" r="3.5" fill="#F59E0B"/>
               </svg>
-              <h3 class="font-heading font-700 text-white text-lg mb-2">Step Deck</h3>
-              <p class="text-iron-400 text-sm leading-relaxed">Step-deck configuration for taller loads that exceed standard flatbed height limits.</p>
+              <h3 class="font-heading font-700 text-white text-lg mb-2">Drop Deck</h3>
+              <p class="text-iron-400 text-sm leading-relaxed">Drop-deck (step-deck) configuration for taller loads that exceed standard flatbed height limits.</p>
               <div class="mt-4 text-amber-500 text-xs font-heading font-600 uppercase tracking-wider">Height-Critical</div>
             </div>
           </div>
           <!-- Lowboy -->
-          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.2s" data-tilt role="article" aria-label="Lowboy trailers">
+          <div class="group card-lift iron-panel border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.2s" data-tilt role="article" aria-label="Lowboy trailers">
             <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
             <div class="p-6">
               <svg viewBox="0 0 80 40" class="w-20 h-10 mb-5" fill="none" aria-hidden="true">
@@ -1316,7 +1357,7 @@
             </div>
           </div>
           <!-- RGN -->
-          <div class="group card-lift bg-iron-900 border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.3s" data-tilt role="article" aria-label="Removable gooseneck trailers">
+          <div class="group card-lift iron-panel border border-iron-800 hover:border-amber-500/40 rounded-xl overflow-hidden reveal" style="transition-delay:.3s" data-tilt role="article" aria-label="Removable gooseneck trailers">
             <div class="h-2 bg-amber-500/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
             <div class="p-6">
               <svg viewBox="0 0 80 40" class="w-20 h-10 mb-5" fill="none" aria-hidden="true">
@@ -1342,29 +1383,33 @@
     <div class="divider-amber opacity-30 mx-8 lg:mx-20" role="separator" aria-hidden="true"></div>
 
     <!-- ─── ABOUT ──────────────────────────────────────────────── -->
-    <section id="about" class="py-20 lg:py-28 bg-iron-900 relative" aria-labelledby="about-heading">
+    <section id="about" class="py-20 lg:py-28 bg-iron-900 relative aurora" aria-labelledby="about-heading">
       <div class="absolute left-0 w-1 top-16 bottom-16 bg-amber-500/20" aria-hidden="true"></div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div class="reveal-left">
-            <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">About Us</p>
+            <p class="text-amber-500 font-mono font-600 text-xs uppercase tracking-[0.25em] mb-3">About Us</p>
             <h2 id="about-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white leading-tight mb-6">
-              The Border Is Our<br/><span class="text-amber-500">Home Turf</span>
+              The Border Is Our<br/><span class="text-gradient-amber">Home Turf</span>
             </h2>
-            <p class="text-iron-300 leading-relaxed mb-5">Heavy Iron Logistics is a Mission, Texas-based specialized freight carrier operating at the US–Mexico border. While other carriers treat the crossing as a bottleneck, we built our entire operation around it — turning border expertise into your competitive edge.</p>
-            <p class="text-iron-400 leading-relaxed mb-8">Licensed under DOT and MC authority, we operate as both a direct carrier and freight forwarder. Our customs brokerage partnerships ensure seamless import and export documentation for every shipment — no matter how heavy, wide, or tall.</p>
+            <p class="text-iron-300 leading-relaxed mb-5">Heavy Iron Logistics, operating under Trelzo LLC, is a Mission, Texas-based specialized transportation and freight brokerage company working the US–Mexico border. While other carriers treat the crossing as a bottleneck, we built our entire operation around it — turning border expertise into your competitive edge across the United States, Canada, and Mexico.</p>
+            <p class="text-iron-400 leading-relaxed mb-8">FMCSA authorized under USDOT 2541334 and MC-884820, we operate as both a direct carrier and freight broker — with a secure holding yard in Hidalgo, TX backing every cross-border move. Our customs brokerage and freight-forwarding partnerships ensure seamless import and export documentation for every shipment — no matter how heavy, wide, or tall.</p>
             <div class="flex flex-wrap gap-3 mb-8">
               <div class="flex items-center gap-2 bg-iron-800 border border-iron-700 rounded-lg px-4 py-2.5">
                 <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                <span class="text-iron-200 text-sm font-medium">DOT Authorized</span>
+                <span class="text-iron-200 text-sm font-medium font-mono">USDOT 2541334</span>
               </div>
               <div class="flex items-center gap-2 bg-iron-800 border border-iron-700 rounded-lg px-4 py-2.5">
                 <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                <span class="text-iron-200 text-sm font-medium">MC Authority</span>
+                <span class="text-iron-200 text-sm font-medium font-mono">MC-884820</span>
               </div>
               <div class="flex items-center gap-2 bg-iron-800 border border-iron-700 rounded-lg px-4 py-2.5">
                 <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
-                <span class="text-iron-200 text-sm font-medium">Customs Partner</span>
+                <span class="text-iron-200 text-sm font-medium">Customs &amp; Forwarding</span>
+              </div>
+              <div class="flex items-center gap-2 bg-iron-800 border border-iron-700 rounded-lg px-4 py-2.5">
+                <svg class="w-5 h-5 text-steel-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+                <span class="text-iron-200 text-sm font-medium">Hidalgo, TX Yard</span>
               </div>
             </div>
             <div class="space-y-3">
@@ -1384,7 +1429,7 @@
           </div>
           <div class="space-y-5 reveal">
             <!-- Animated border-crossing route map -->
-            <div class="bg-iron-950 border border-iron-800 rounded-xl p-6 hover:border-amber-500/30 transition-colors duration-300 route-map-wrap">
+            <div class="iron-panel-dark border border-iron-800 rounded-xl p-6 hover:border-amber-500/30 transition-colors duration-300 route-map-wrap">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="font-heading font-700 text-white text-lg">The Route We Know Best</h3>
                 <span class="text-amber-500 text-xs font-heading font-600 uppercase tracking-wider">~20 Min Crossing</span>
@@ -1407,17 +1452,17 @@
               </svg>
               <p class="text-iron-500 text-xs mt-3 leading-relaxed">From our Mission, TX gateway across the Pharr–Reynosa international bridge — we run this crossing daily, so paperwork never holds up the load.</p>
             </div>
-            <div class="bg-iron-950 border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
-              <span class="font-heading font-800 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">01</span>
-              <div><h3 class="font-heading font-700 text-white text-lg mb-1">Border Expertise</h3><p class="text-iron-400 text-sm leading-relaxed">Based in Mission, TX — steps from the US–Mexico border crossing. We know the documentation, regulations, and timing for smooth cross-border moves.</p></div>
+            <div class="iron-panel-dark border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
+              <span class="font-mono font-700 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">01</span>
+              <div><h3 class="font-heading font-700 text-white text-lg mb-1">Cross-Border Transport</h3><p class="text-iron-400 text-sm leading-relaxed">Full import/export freight forwarding and customs support across the US, Canada, and Mexico — backed by our secure holding yard in Hidalgo, TX, steps from the Mission border crossing.</p></div>
             </div>
-            <div class="bg-iron-950 border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
-              <span class="font-heading font-800 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">02</span>
-              <div><h3 class="font-heading font-700 text-white text-lg mb-1">Specialized Equipment</h3><p class="text-iron-400 text-sm leading-relaxed">Full fleet of flatbed, step deck, lowboy, and RGN trailers configured for heavy machinery, industrial equipment, and oversize loads.</p></div>
+            <div class="iron-panel-dark border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
+              <span class="font-mono font-700 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">02</span>
+              <div><h3 class="font-heading font-700 text-white text-lg mb-1">Specialized Equipment</h3><p class="text-iron-400 text-sm leading-relaxed">Full fleet of RGN, lowboy, drop deck, and standard flatbed trailers configured for earthmoving equipment, drilling rigs, and oversized cranes.</p></div>
             </div>
-            <div class="bg-iron-950 border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
-              <span class="font-heading font-800 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">03</span>
-              <div><h3 class="font-heading font-700 text-white text-lg mb-1">Carrier &amp; Forwarder</h3><p class="text-iron-400 text-sm leading-relaxed">Unique dual role — we haul directly as an authorized carrier and arrange logistics as a freight forwarder, providing full flexibility for your supply chain.</p></div>
+            <div class="iron-panel-dark border border-iron-800 rounded-xl p-6 flex gap-5 items-start hover:border-amber-500/30 transition-colors duration-300">
+              <span class="font-mono font-700 text-4xl text-amber-500/30 leading-none select-none" aria-hidden="true">03</span>
+              <div><h3 class="font-heading font-700 text-white text-lg mb-1">Carrier &amp; Broker</h3><p class="text-iron-400 text-sm leading-relaxed">Unique dual role — we haul directly as an FMCSA-authorized carrier and arrange capacity as a freight broker, giving you full flexibility for your supply chain.</p></div>
             </div>
           </div>
         </div>
@@ -1425,16 +1470,16 @@
     </section>
 
     <!-- ─── CONTACT ────────────────────────────────────────────── -->
-    <section id="contact" class="py-20 lg:py-28 relative" aria-labelledby="contact-heading">
+    <section id="contact" class="py-20 lg:py-28 relative aurora" aria-labelledby="contact-heading">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-          <p class="text-amber-500 font-heading font-600 text-sm uppercase tracking-widest mb-3">Reach Us</p>
+          <p class="text-amber-500 font-mono font-600 text-xs uppercase tracking-[0.25em] mb-3">Reach Us</p>
           <h2 id="contact-heading" class="font-heading font-800 text-4xl lg:text-5xl text-white">Dispatch Is Standing By</h2>
           <p class="text-iron-400 mt-5 max-w-md mx-auto leading-relaxed">Call, email, or stop by our Mission, TX gateway — someone answers, day or night.</p>
           <div class="w-16 h-1 bg-amber-500 mt-5 mx-auto rounded-full"></div>
         </div>
         <div class="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <div class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 text-center reveal" data-tilt>
+          <div class="card-lift iron-panel border border-iron-800 rounded-xl p-7 text-center reveal" data-tilt>
             <div class="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-5">
               <svg class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/></svg>
             </div>
@@ -1454,7 +1499,7 @@
             <a href="mailto:dispatch@heavyironlog.com" class="block text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors cursor-pointer mt-3 mb-1 break-all">dispatch@heavyironlog.com</a>
             <span class="text-iron-500 text-xs">Dispatch Team</span>
           </div>
-          <div class="card-lift bg-iron-900 border border-iron-800 rounded-xl p-7 text-center reveal" style="transition-delay:.2s" data-tilt>
+          <div class="card-lift iron-panel border border-iron-800 rounded-xl p-7 text-center reveal" style="transition-delay:.2s" data-tilt>
             <div class="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-5">
               <svg class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
@@ -1501,16 +1546,16 @@
             <svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect width="36" height="36" rx="4" fill="#F59E0B"/><path d="M6 24V16l5-6h14l5 6v8H6z" fill="#0A0F1A"/><rect x="8" y="24" width="4" height="3" rx="2" fill="#F59E0B"/><rect x="24" y="24" width="4" height="3" rx="2" fill="#F59E0B"/><path d="M6 20h24" stroke="#F59E0B" stroke-width="1.5"/></svg>
             <div><span class="block font-heading font-700 text-white text-sm uppercase tracking-tight">Heavy Iron Logistics</span><span class="block text-iron-500 text-xs">Mission, TX</span></div>
           </a>
-          <p class="text-iron-500 text-sm leading-relaxed max-w-xs">Specialized flatbed, lowboy, deck &amp; RGN freight carrier moving heavy iron across the US–Mexico border — every load, every day, on time.</p>
+          <p class="text-iron-500 text-sm leading-relaxed max-w-xs">Specialized heavy-haul carrier and freight broker moving construction, mining, oilfield &amp; crane equipment across the US, Canada &amp; Mexico — every load, every day, on time.</p>
         </div>
         <div>
           <h4 class="font-heading font-600 text-white text-sm uppercase tracking-wider mb-4">Services</h4>
           <ul class="space-y-2.5" role="list">
-            <li><a href="#fleet" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Flatbed Transport</a></li>
-            <li><a href="#fleet" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Lowboy &amp; RGN</a></li>
-            <li><a href="#services" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Cross-Border Freight</a></li>
-            <li><a href="#services" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Freight Forwarding</a></li>
-            <li><a href="#services" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Customs Brokerage</a></li>
+            <li><a href="#services" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Construction Equipment</a></li>
+            <li><a href="#services" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Mining &amp; Oilfield Gear</a></li>
+            <li><a href="#services" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Industrial Cranes</a></li>
+            <li><a href="#fleet" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Lowboy, RGN &amp; Drop Deck</a></li>
+            <li><a href="#about" class="text-iron-400 hover:text-amber-400 text-sm transition-colors cursor-pointer">Freight Forwarding &amp; Customs</a></li>
           </ul>
         </div>
         <div>
@@ -1524,8 +1569,8 @@
         </div>
       </div>
       <div class="pt-8 border-t border-iron-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-iron-600 text-xs">&copy; <span id="year"></span> Heavy Iron Logistics. All rights reserved.</p>
-        <p class="text-iron-600 text-xs">2005 E. Griffin Pkwy, Suite A, Mission, TX 78572</p>
+        <p class="text-iron-600 text-xs">&copy; <span id="year"></span> Heavy Iron Logistics, operating under Trelzo LLC. All rights reserved.</p>
+        <p class="text-iron-600 text-xs font-mono">USDOT 2541334 · MC-884820 · 2005 E. Griffin Pkwy, Ste A, Mission, TX 78572</p>
       </div>
     </div>
   </footer>
@@ -1545,10 +1590,11 @@
     const marqueeTrack = document.getElementById('marquee-track');
     if (marqueeTrack) {
       const words = [
-        'Flatbed', 'Step Deck', 'Lowboy', 'RGN', 'Cross-Border Customs',
-        'Freight Forwarding', '24/7 Dispatch', 'DOT & MC Authorized', 'Mission, TX Gateway'
+        'Flatbed', 'Drop Deck', 'Lowboy', 'RGN', 'Mining &amp; Oilfield',
+        'Industrial Cranes', 'Construction Equipment', 'US · Canada · Mexico',
+        '24/7 Dispatch', 'USDOT 2541334 · MC-884820', 'Hidalgo, TX Yard'
       ];
-      const accent = new Set(['24/7 Dispatch', 'Cross-Border Customs']);
+      const accent = new Set(['24/7 Dispatch', 'US · Canada · Mexico', 'Industrial Cranes']);
       const group = words.map(w => `<span class="marquee-item${accent.has(w) ? ' marquee-item--accent' : ''}"><span class="marquee-dot" aria-hidden="true"></span>${w}</span>`).join('');
       marqueeTrack.innerHTML = group + group; // duplicate for seamless loop
     }
@@ -1620,10 +1666,12 @@
       const liveMessages = [
         'Load #4521 cleared customs — Pharr Bridge → Reynosa, MX',
         'RGN trailer dispatched — Mission, TX → Monterrey, MX',
-        'Flatbed pickup confirmed — McAllen, TX heavy equipment yard',
+        'Drilling rig staged — Hidalgo, TX secure holding yard',
         'Lowboy crossing complete — 38,000 lb excavator delivered',
+        'Crane components cleared — multi-axle RGN configuration',
         'Dispatch online 24/7 — call (956) 522-0382 anytime',
-        'Step deck en route — oversize load, escort secured',
+        'Drop deck en route — oversize load, escort secured',
+        'Load cleared north — Mission, TX → Ontario, Canada',
       ];
       let liveIdx = 0;
       setInterval(() => {
